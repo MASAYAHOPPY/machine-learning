@@ -1,9 +1,19 @@
 import pandas as pd
+#Pandasの読み込み
 
-df = pd.read_excel('data/src/sample.xlsx')
+df = pd.read_excel('test.xlsx')
+#df形式で読み込み
 
+print(df.head())
+#一部を表示
+
+pd.set_option('display.max_rows', 178)
 print(df)
-#         A   B   C
-# one    11  12  13
-# two    21  22  23
-# three  31  32  33
+＃全部表示
+
+df = df.drop(['SMILES'],axis=1)
+＃一部を削除
+
+df['Wavelegth'].value_counts()
+# Wavelegthの種類ごとの数
+
