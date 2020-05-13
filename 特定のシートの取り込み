@@ -1,0 +1,4 @@
+sheet = wb.sheet_by_name('sheet1')
+
+print(type(sheet))
+# <class 'xlrd.sheet.Sheet'>
