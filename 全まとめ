@@ -34,7 +34,4 @@ Y = df['Symmetry group']
 X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=0)
 #  学習用とテスト用に分ける。(自動振り分け）
 
-X.drop(X.columns[np.isnan(X).any()], axis=1)
-#　XからNaNを含む"列"を消す
-
 
