@@ -14,6 +14,6 @@ print(df)
 df = df.drop(['SMILES'],axis=1)
 ＃一部を削除
 
-df['Wavelegth'].value_counts()
+df['Wavelength'].value_counts()
 # Wavelegthの種類ごとの数
 
