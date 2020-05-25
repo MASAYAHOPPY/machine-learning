@@ -6,7 +6,7 @@ data.info()
 # データの欠損値有無、エンコード
 
 ＜欠損値処理＞
-data.dropna
+◎data.dropna
 #  欠損値を削除
 
 data.dropna(axis = 'columns')          # 欠損値を含む列を削除する
@@ -14,7 +14,7 @@ data.dropna(how = 'all')               # すべての要素が欠損している
 data.dropna(thresh = 2)                # 欠損していない要素数が2以上の行のみを保持する
 data.dropna(subset = ['Age', 'Cabin']) # 列Age, Cabinで欠損値を含む行を削除する
 
-data.fillna('FILL')
+◎data.fillna('FILL')
 #　欠損値を置換
 
 data['Age'].fillna(20)                   # 列Ageの欠損値を20で穴埋め
