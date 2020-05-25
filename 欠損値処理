@@ -22,6 +22,7 @@ data['Age'].fillna(data['Age'].mean())   # 列Ageの欠損値をAgeの平均値�
 data['Age'].fillna(data['Age'].median()) # 列Ageの欠損値をAgeの中央値で穴埋め
 data['Age'].fillna(data['Age'].mode())   # 列Ageの欠損値をAgeの最頻値で穴埋め
 
+＜その他＞
 X.drop(X.columns[np.isnan(X).any()], axis=1)
 #　XからNaNを含む"列"を消す
 
