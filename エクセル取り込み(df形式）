@@ -1,0 +1,5 @@
+import pandas as pd
+#Pandasの読み込み
+
+df = pd.read_excel('test.xlsx')
+#df形式でエクセル読み込み
