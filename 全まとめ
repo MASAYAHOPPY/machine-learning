@@ -34,4 +34,11 @@ Y = df['Symmetry group']
 X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=0)
 #  学習用とテスト用に分ける。(自動振り分け）
 
+ーー機械学習を導入ーー
+
+data = [[5.2, 3.0, 1.5, 0.6]]
+#　左から順に新しいデータを導入
+
+model.predict(data)
+#　構築したモデルから目的変数を求める
 
