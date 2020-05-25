@@ -1,0 +1,11 @@
+# k-近傍法（k-NN）
+from sklearn.neighbors import KNeighborsClassifier
+
+#k-NNインスタンス。今回は3個で多数決。3の値を変更して色々試すと〇
+model = KNeighborsClassifier(n_neighbors=3)
+#学習モデル構築。引数に訓練データの特徴量と、それに対応したラベル
+model.fit(X_train, y_train)
+
+# .scoreで正解率を算出。
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
