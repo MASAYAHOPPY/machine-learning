@@ -2,18 +2,18 @@ import pandas as pd
 #Pandasの読み込み
 
 df = pd.read_excel('test.xlsx')
-#df形式で読み込み
+#df形式でエクセル読み込み
 
 print(df.head())
-#一部を表示
+#頭の一部を表示
 
 pd.set_option('display.max_rows', 178)
 print(df)
 ＃全部表示
 
 df = df.drop(['SMILES'],axis=1)
-＃一部を削除
+＃”SMILES”を削除
 
 df['Wavelength'].value_counts()
-# Wavelegthの種類ごとの数
+# "Wavelength"が何種類に分類できるか？
 
