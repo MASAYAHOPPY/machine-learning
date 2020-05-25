@@ -1,5 +1,11 @@
+import numpy as np
+import numpy.random as random
+import scipy as sp
 import pandas as pd
-#Pandasの読み込み
+from pandas import Series, DataFrame
+from sklearn.model_selection import train_test_split
+#pandas=データ前処理ソフト（取り込み、削除）,numpy=行列とベクトル計算,scipy=最適化と積分と画像処理、統計,sklearn=機械学習
+#ramdom=乱数作成,train_test_split=学習用とテストにわける,Series, DataFrame=s（1次元）df（2次元）形式の読み込みを可能にする
 
 df = pd.read_excel('test.xlsx')
 #df形式でエクセル読み込み
@@ -8,6 +14,8 @@ print(df.head())
 #頭の一部を表示
 
 pd.set_option('display.max_rows', 178)
+#何列まで表示するか
+
 print(df)
 ＃全部表示
 
@@ -16,4 +24,17 @@ df = df.drop(['SMILES'],axis=1)
 
 df['Wavelength'].value_counts()
 # "Wavelength"が何種類に分類できるか？
+
+X = df.drop('Symmetry group', axis=1)
+#　Symmetry group以外を説明変数(特徴量）とする
+
+Y = df['Symmetry group']
+#  Symmetry groupを目的変数（求めたい値）にする
+
+X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=0)
+#  学習用とテスト用に分ける。(自動振り分け）
+
+X.drop(X.columns[np.isnan(X).any()], axis=1)
+#　XからNaNを含む"列"を消す
+
 
