@@ -1,0 +1,10 @@
+＜現在の作業フォルダの確認＞
+
+import os
+
+path = os.getcwd()
+
+print(path)
+
+＜作業フォルダ変更＞
+os.chdir('C:\Windows\system32/Dataset')
