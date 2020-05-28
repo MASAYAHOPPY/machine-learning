@@ -7,7 +7,7 @@ from pandas import Series, DataFrame
 from sklearn.model_selection import train_test_split
 os.chdir('C:/Users/otyaz/OneDrive/Data')
 os.getcwd()
-df = pd.read_excel('test.xlsx')
+df = pd.read_excel('test2.xlsx')
 X = df.drop('Symmetry group', axis=1)
 Y = df['Symmetry group']
 X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=0)
