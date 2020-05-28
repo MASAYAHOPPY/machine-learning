@@ -9,8 +9,11 @@ from sklearn.model_selection import train_test_split
 #pandas=データ前処理ソフト（取り込み、削除）,numpy=行列とベクトル計算,scipy=最適化と積分と画像処理、統計,sklearn=機械学習
 #ramdom=乱数作成,train_test_split=学習用とテストにわける,Series, DataFrame=s（1次元）df（2次元）形式の読み込みを可能にする
 
-os.chdir('C:\Windows\system32/Dataset')
+os.chdir('C:/Users/otyaz/OneDrive/Data')
 #作業フォルダ変更
+
+os.getcwd()
+#作業フォルダ確認
 
 df = pd.read_excel('test.xlsx')
 #df形式でエクセル読み込み
