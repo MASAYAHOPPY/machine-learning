@@ -18,3 +18,25 @@ model = KNeighborsClassifier(n_neighbors=3)
 model.fit(X_train, y_train)
 print("train score:",model.score(X_train,y_train))
 print("test score:",model.score(X_test,y_test))
+
+＜決定木＞
+from sklearn.tree import DecisionTreeClassifier
+model = DecisionTreeClassifier(max_depth=3)
+model.fit(X_train, y_train)
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
+
+＜サポートベクターマシン（SVM）＞
+from sklearn.svm import LinearSVC
+model = LinearSVC()
+model.fit(X_train, y_train)
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
+
+
+＜ロジスティック回帰＞
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
