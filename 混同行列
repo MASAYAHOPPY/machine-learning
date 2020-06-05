@@ -1,0 +1,8 @@
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import confusion_matrix
+
+mlp = MLPClassifier()
+pred_y = mlp.fit(X_train,y_train).predict(X_test)
+
+cm = confusion_matrix(y_test,pred_y)
+print(cm)
