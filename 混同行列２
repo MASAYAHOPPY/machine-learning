@@ -3,4 +3,4 @@ y_pred = model.predict(X_test)
 #クラス分類
 from sklearn.metrics import classification_report
 #混同行列４種類
-print(classification_report(Y_test, y_pred))
+print(classification_report(y_test, y_pred))
