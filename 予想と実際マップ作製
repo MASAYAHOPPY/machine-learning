@@ -1,0 +1,7 @@
+#マップを作製
+mat = confusion_matrix(y_test, y_pred)
+sns.heatmap(mat, square=True, annot=True, cbar=False, fmt='d', cmap='RdPu')
+
+#軸名を設定
+plt.xlabel('predicted class')
+plt.ylabel('true value')
