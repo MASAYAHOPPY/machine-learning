@@ -10,6 +10,18 @@ model.fit(X_train, y_train)
 print("train score:",model.score(X_train,y_train))
 print("test score:",model.score(X_test,y_test))
 
+＜ラムダムフォレスト＞
+from sklearn.ensemble import RandomForestClassifier
+
+# 識別モデルの構築
+model = RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42)
+#学習モデル構築。引数に訓練データの特徴量と、それに対応したラベル
+model.fit(X_train, y_train)
+# .scoreで正解率を算出。
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
+
+
 
 ＜決定木＞
 from sklearn.tree import DecisionTreeClassifier
