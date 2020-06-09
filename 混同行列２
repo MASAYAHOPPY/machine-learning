@@ -1,5 +1,5 @@
 #予測値の算出
-y_pred = .predict(test_x)
+y_pred = model.predict(test_x)
 #クラス分類
 from sklearn.metrics import classification_report
 #混同行列４種類
