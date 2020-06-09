@@ -10,7 +10,7 @@ os.getcwd()
 df = pd.read_excel('test1.xlsx')
 X = df.drop('Symmetry group', axis=1)
 Y = df['Symmetry group']
-X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
 
 ＜k-近傍法（k-NN）の例＞
 from sklearn.neighbors import KNeighborsClassifier
