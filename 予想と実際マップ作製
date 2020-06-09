@@ -1,3 +1,7 @@
+#データ取得
+from sklearn.metrics import confusion_matrix
+from pandas.plotting import scatter_matrix
+
 #マップを作製
 mat = confusion_matrix(y_test, y_pred)
 sns.heatmap(mat, square=True, annot=True, cbar=False, fmt='d', cmap='RdPu')
