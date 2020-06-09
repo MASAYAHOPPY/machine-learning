@@ -38,7 +38,7 @@ X = df.drop('Symmetry group', axis=1)
 Y = df['Symmetry group']
 # Symmetry groupを目的変数（求めたい値）にする
 
-X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=42)
 # 学習用とテスト用に分ける。(自動振り分け）
 
 ーー機械学習を導入ーー
