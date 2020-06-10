@@ -1,0 +1,6 @@
+#重要度
+importance = pd.DataFrame({ '変数' :X_train.columns, '重要度' :model.feature_importances_})
+importance
+
+
+
