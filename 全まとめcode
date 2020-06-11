@@ -8,13 +8,16 @@ from sklearn.model_selection import train_test_split
 os.chdir('C:/Users/otyaz/OneDrive/Data')
 os.getcwd()
 df = pd.read_excel('test1.xlsx')
-X = df.drop('Symmetry group', axis=1)
-Y = df['Symmetry group']
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
 
 df.isnull().sum()
 df.dropna(axis = 'columns')
 df.dropna(inplace = True)
+
+X = df.drop('Symmetry group', axis=1)
+Y = df['Symmetry group']
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
+
+
 
 ＜k-近傍法（k-NN）＞
 from sklearn.neighbors import KNeighborsClassifier
