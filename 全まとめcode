@@ -12,6 +12,7 @@ df = pd.read_excel('test1.xlsx')
 df.isnull().sum()
 df.dropna(axis = 'columns')
 df.dropna(inplace = True)
+df.isnull().sum()
 
 X = df.drop('Symmetry group', axis=1)
 Y = df['Symmetry group']
