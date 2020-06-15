@@ -12,3 +12,11 @@ df = pd.read_excel('test.xlsx')
 df.columns = ['SMILES']
 print(df)
 #ファイルとcolumns(タイトル）の指定
+
+df['MOL'] = df['SMILES'].apply(Chem.MolFromSmiles)
+#smilesからmoL変換
+
+# 記述子を計算
+calc = Calculator(descriptors, ignore_3D=True)
+df_descriptors_mordred = calc.pandas(df['MOL'])
+df_descriptors_mordred.head()
