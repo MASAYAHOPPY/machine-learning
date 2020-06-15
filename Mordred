@@ -1,4 +1,9 @@
 import os
+import pandas as pd
+from rdkit import Chem
+from mordred import Calculator, descriptors
+#データ取得
+
 os.chdir('C:/Users/otyaz/OneDrive/Data')
 os.getcwd()
 #場所を指定
