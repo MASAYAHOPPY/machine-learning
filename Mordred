@@ -1,0 +1,9 @@
+import os
+os.chdir('C:/Users/otyaz/OneDrive/Data')
+os.getcwd()
+#場所を指定
+
+df = pd.read_excel('test.xlsx')
+df.columns = ['SMILES']
+print(df)
+#ファイルとcolumns(タイトル）の指定
