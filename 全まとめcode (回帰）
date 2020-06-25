@@ -1,0 +1,63 @@
+import os
+import numpy as np
+import numpy.random as random
+import scipy as sp
+import pandas as pd
+from pandas import Series, DataFrame
+from sklearn.model_selection import train_test_split
+os.chdir('C:/Users/otyaz/OneDrive/Data')
+os.getcwd()
+df = pd.read_excel('HOMOLUMO.xlsx')
+
+df.isnull().sum()
+df.dropna(axis = 'columns')
+df.dropna(inplace = True)
+df.isnull().sum()
+
+X = df.drop('HOMOLUMO', axis=1)
+Y = df['HOMOLUMO']
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
+
+
+
+＜k-近傍法（k-NN）＞
+from sklearn.neighbors import KNeighborsClassifier
+model = KNeighborsClassifier(n_neighbors=3)
+model.fit(X_train, y_train)
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
+
+＜ラムダムフォレスト＞
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42)
+model.fit(X_train, y_train)
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
+
+＜決定木＞
+from sklearn.tree import DecisionTreeClassifier
+model = DecisionTreeClassifier(max_depth=3)
+model.fit(X_train, y_train)
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
+
+＜サポートベクターマシン（SVM）＞
+from sklearn.svm import LinearSVC
+model = LinearSVC()
+model.fit(X_train, y_train)
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
+
+
+＜ロジスティック回帰＞
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
+
+<クラス分類>
+#予測値の算出
+y_pred = model.predict(X_test)
+from sklearn.metrics import classification_report
+print(classification_report(y_test, y_pred))
