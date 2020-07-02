@@ -1,3 +1,0 @@
-# 変数の重要度を可視化
-importance = pd.DataFrame({ '変数' :train_x.columns, '重要度' :random_forest.feature_importances_})
-importance
