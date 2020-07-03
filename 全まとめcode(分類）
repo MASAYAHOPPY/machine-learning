@@ -18,9 +18,36 @@ X = df.drop('Symmetry group', axis=1)
 Y = df['Symmetry group']
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
 
+＜k-近傍法（k-NN）＞
+from sklearn.neighbors import KNeighborsClassifier
+model = KNeighborsClassifier(n_neighbors=3)
+model.fit(X_train, y_train)
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
 ＜ラムダムフォレスト＞
 from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42)
 model.fit(X_train, y_train)
 print("train score:",model.score(X_train,y_train))
 print("test score:",model.score(X_test,y_test))
+＜決定木＞
+from sklearn.tree import DecisionTreeClassifier
+model = DecisionTreeClassifier(max_depth=3)
+model.fit(X_train, y_train)
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
+＜サポートベクターマシン（SVM）＞
+from sklearn.svm import LinearSVC
+model = LinearSVC()
+model.fit(X_train, y_train)
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
+＜ロジスティック回帰＞
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+print("train score:",model.score(X_train,y_train))
+print("test score:",model.score(X_test,y_test))
+
+#機械学習の精度
+
