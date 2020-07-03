@@ -10,7 +10,6 @@ cv_params = {'metric':['error'],
              'subsample':[0.5,1.0]
             }
  
-model = xgb.XGBClassifier()
 model_grid = GridSearchCV(cls, cv_params, cv=cv=KFold(2, random_state=seed), scoring='accuracy', iid=False)
 model_grid.fit(X_train,
              y_train,
