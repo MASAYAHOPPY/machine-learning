@@ -7,3 +7,12 @@ search_params = {
       'SubFP200'         : [3, 5, 10, 15, 20, 25, 30, 40, 50, 100]
 }
 ＃項目ごとに調べたい番号の値（引数）
+
+gs = GridSearchCV(model(),
+                  search_params, 
+                  cv=3,            
+                  verbose=True,   
+                  n_jobs=-1)       
+gs.fit(train_images, train_labels)
+ 
+print(gs.best_estimator_)
