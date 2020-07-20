@@ -1,18 +1,19 @@
 search_params = {
-     'SubFP1'      : [5, 10, 20, 30, 50, 100, 300],
-      'SubFP2'      : [3, 5, 10, 15, 20],
-      'SubFP10'      : [2525],
-      'SubFP100'            : [1],
-      'SubFP150' : [3, 5, 10, 15, 20, 25, 30, 40, 50, 100],
-      'SubFP200'         : [3, 5, 10, 15, 20, 25, 30, 40, 50, 100]
+     'n_estimators'      : [5, 10, 20, 30, 50, 100, 300],
+      'max_features'      : [3, 5, 10, 15, 20],
+      'random_state'      : [2525],
+      'n_jobs'            : [1],
+      'min_samples_split' : [3, 5, 10, 15, 20, 25, 30, 40, 50, 100],
+      'max_depth'         : [3, 5, 10, 15, 20, 25, 30, 40, 50, 100]
 }
-＃項目ごとに調べたい番号の値（引数）
+＃ラムダムフォレストのハイパーパラメータごとの最適条件探索
 
-gs = GridSearchCV(model(),
+gs = GridSearchCV(RandomForestClassifier(),
                   search_params, 
                   cv=3,            
                   verbose=True,   
-                  n_jobs=-1)       
-gs.fit(train_images, train_labels)
+                  n_jobs=-1)      
+                  
+gs.fit(X_train, y_train)
  
 print(gs.best_estimator_)
