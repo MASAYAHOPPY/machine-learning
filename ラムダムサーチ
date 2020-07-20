@@ -1,0 +1,29 @@
+from sklearn.model_selection import RandomizedSearchCV
+
+search_params = {
+     'n_estimators'      : [5, 10, 20, 30, 50, 100, 300],
+      'max_features'      : [3, 5, 10, 15, 20],
+      'random_state'      : [2525],
+      'n_jobs'            : [1],
+      'min_samples_split' : [3, 5, 10, 15, 20, 25, 30, 40, 50, 100],
+      'max_depth'         : [3, 5, 10, 15, 20, 25, 30, 40, 50, 100]
+
+rs = RandomizedSearchCV(RandomForestClassifier(),
+                        search_params, 
+                        cv=3,            
+                        verbose=True,   
+                        n_jobs=-1) 
+              # 対象の機械学習モデル
+              # 探索パラメタ辞書
+              # クロスバリデーションの分割数
+              # ログ表示
+              # 並列処理
+              
+rs.fit(X_train, y_train)
+print(rs.best_estimator_)
+
+#fittingと出力→可視化
+
+print('best score: {:0.3f}'.format(rs.score(X_test, y_test)))
+print('best params: {}'.format(rs.best_params_))
+print('best val score:  {:0.3f}'.format(rs.best_score_))
