@@ -1,0 +1,9 @@
+from sklearn.model_selection import cross_val_score
+# 桁数を指定
+np.set_printoptions(precision=3)
+
+# cv=5で分割数を指定
+scores = cross_val_score(model, X, y, cv=5)
+
+# out[0.757  0.972  0.944  1.    0.971]
+print(scores)
