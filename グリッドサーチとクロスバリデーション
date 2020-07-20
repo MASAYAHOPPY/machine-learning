@@ -38,3 +38,13 @@ best score: 0.956
 best params: {'max_depth': 2, 'min_samples_leaf': 1}
 best val score:  0.955
 ＞＞＞＞＞＞＞＞＞＞＞＞＞
+
+import pandas as  pd
+import seaborn as sns
+%matplotlib inline
+
+cv_result = pd.DataFrame(rs.cv_results_)
+cv_result = cv_result[['param_max_depth', 'param_min_samples_leaf', 'mean_test_score']]
+cv_result_pivot = cv_result.pivot_table('mean_test_score', 'param_max_depth', 'param_min_samples_leaf')
+
+heat_map = sns.heatmap(cv_result_pivot, cmap='Greys', annot=True);
