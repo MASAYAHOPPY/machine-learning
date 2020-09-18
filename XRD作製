@@ -1,0 +1,17 @@
+from pymatgen import Lattice, Structure
+from pymatgen.analysis.diffraction.xrd import XRDCalculator
+from IPython.display import Image, display
+%matplotlib inline
+
+# 格子定数
+  空間群
+ (空間群、分子、原子）
+＃XRD計算
+　図に出力
+
+
+a = 4.209 
+latt = Lattice.cubic(a)
+structure = Structure(latt, ["Cs", "Cl"], [[0, 0, 0], [0.5, 0.5, 0.5]])
+c = XRDCalculator()
+c.show_plot(structure)
