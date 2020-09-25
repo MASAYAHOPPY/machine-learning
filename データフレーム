@@ -1,0 +1,4 @@
+＜行削除＞
+print(df.drop(['A', 'B', 'C', 'D', 'E', 'F', 'G']) axis=0)
+＜列削除＞
+print(df.drop(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], axis=1))
