@@ -1,0 +1,5 @@
+＜ラベルの確認＞
+print(type('label'))
+
+
+
