@@ -1,0 +1,39 @@
+ーーーダミー変数ーーー
+＜labelを文字列にする＞
+df['label'] = le.inverse_transform(df['label'])
+＜labelからダミー変数を作製＞
+＜df2＝(label以外の項目）＋（labelのダミー変数）　引数は＝縦と横のどちらに結合するか？＞
+df_dummy = pd.get_dummies(df['label'])
+df2 = pd.concat([df.drop(['label'],axis=1),df_dummy],axis=1)
+
+ーーーラベルエンコーダーーーーー
+from sklearn.preprocessing import LabelEncoder
+#LabelEncoderのインスタンスを生成
+le = LabelEncoder()
+#ラベルを覚えさせる
+le = le.fit(df['label'])
+#ラベルを整数に変換
+df['label'] = le.transform(df['label'])
+df
+
+ーーーーワンホットエンコーダーーーー
+from sklearn.preprocessing import OneHotEncoder
+#one-hot エンコーダの生成
+oe = OneHotEncoder(categorical_features=[2])
+#one-hot エンコーディングを実行
+array = oe.fit_transform(df).toarray()
+array
+
+#DataFrameに変換
+columns = ['label_coffee','label_cola','label_tea','size','price']
+df1 = pd.DataFrame(data = array, columns = columns)
+#列入れ替え
+df1 = df1[['size','price','label_cola','label_tea','label_coffee']]
+df1
+
+ーーーー多重共線性（説明変数が多すぎて弊害がでる）の削除ーーーーー
+#最初のラベルを削除
+df_dummy = pd.get_dummies(df['label'],drop_first = True)
+#最初のラベルを削除したものをもとのdfにくっつける。
+df3 = pd.concat([df.drop(['label'],axis=1),df_dummy],axis=1)
+df3
