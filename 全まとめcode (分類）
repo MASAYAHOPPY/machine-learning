@@ -7,15 +7,17 @@ from pandas import Series, DataFrame
 from sklearn.model_selection import train_test_split
 os.chdir('C:/Users/otyaz/OneDrive/Data')
 os.getcwd()
-df = pd.read_excel('Substructure2.xlsx')
+df = pd.read_excel('Substructure.xlsx')
 
 df.isnull().sum()
 df.dropna(axis = 'columns')
 df.dropna(inplace = True)
 df.isnull().sum()
 
-X = df.drop('Symmetry group', axis=1)
-Y = df['Symmetry group']
+X = df.drop('T11', axis=1)
+Y = df['T11']
+X=X.astype('str')
+Y=Y.astype('str')
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
 
 ＜k-近傍法（k-NN）＞
