@@ -7,7 +7,7 @@ from pandas import Series, DataFrame
 from sklearn.model_selection import train_test_split
 os.chdir('C:/Users/otyaz/OneDrive/Data')
 os.getcwd()
-df = pd.read_excel('Substructure.xlsx')
+df = pd.read_excel('Substructure3T11.xlsx')
 
 df.isnull().sum()
 df.dropna(axis = 'columns')
