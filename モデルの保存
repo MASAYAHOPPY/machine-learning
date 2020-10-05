@@ -1,0 +1,10 @@
+＜pickleで保存＞
+import pickle
+
+#モデルの保存(ファイル名でモデルの保存）
+filename = 'A.sav'
+pickle.dump(model, open(filename, 'wb'))
+# 保存したモデルをロードする
+loaded_model = pickle.load(open(filename, 'rb'))
+result = loaded_model.score(X_test, Y_test)
+print(result)
