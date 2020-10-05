@@ -1,0 +1,9 @@
+path_w = 'file.txt'
+
+s = 'New file'
+
+with open(path_w, mode='w') as f:
+    f.write(importance)
+
+with open(path_w) as f:
+    print(f.read())
