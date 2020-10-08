@@ -13,7 +13,7 @@ def randomforest_cv(n_estimators, min_samples_split, max_features):
         train_x, train_y,
         scoring = 'accuracy',
         cv = 3, # 3-fold
-        n_jobs = -1 # use all CPUs
+        n_jobs = -1 
     ).mean()
     return val
 
