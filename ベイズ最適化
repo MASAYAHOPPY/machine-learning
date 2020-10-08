@@ -1,0 +1,30 @@
+from bayes_opt import BayesianOptimization
+
+def RandomizedSearchCV_evaluate(min_child_weight, subsample, colsample_bytree, max_depth):
+
+search_params = {
+     'n_estimators'      : [5, 10, 20, 30, 50, 100, 300],
+      'max_features'      : [3, 5, 10, 15, 20],
+      'random_state'      : [2525],
+      'n_jobs'            : [1],
+      'min_samples_split' : [3, 5, 10, 15, 20, 25, 30, 40, 50, 100],
+      'max_depth'         : [3, 5, 10, 15, 20, 25, 30, 40, 50, 100]
+}
+
+rs = RandomizedSearchCV(RandomForestClassifier(),
+                        search_params, 
+                        cv=3,            
+                        verbose=True,   
+                        n_jobs=-1) 
+                        
+rs.set_params(**params)
+rs.fit(X_train,
+y_train,
+early_stopping_rounds=50,
+eval_set=[(X_test, y_test)],
+eval_metric='error',
+verbose=0)
+
+pred = rs.predict(X_test)
+score = accuracy_score(y_test, pred)
+return score
