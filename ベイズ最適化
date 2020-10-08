@@ -12,7 +12,7 @@ params = {
 }
 
 rs = RandomizedSearchCV(RandomForestClassifier(),
-                        search_params, 
+                        params, 
                         cv=3,            
                         verbose=True,   
                         n_jobs=-1) 
