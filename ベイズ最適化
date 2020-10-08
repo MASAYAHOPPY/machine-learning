@@ -2,6 +2,10 @@ from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import RandomForestClassifier
 from bayes_opt import BayesianOptimization
 
+#def()の()の中身が調整したいハイパーパラメータである。
+#最初に交差検証しているので注意
+#次に、データの種類、ハイパーパラメータ、交差検証数、を定義する。
+
 def randomforest_cv(n_estimators, min_samples_split, max_features):
     val = cross_val_score(
         RandomForestClassifier(
@@ -10,12 +14,15 @@ def randomforest_cv(n_estimators, min_samples_split, max_features):
             max_features=max_features,
             random_state=0
         ),
-        train_x, train_y,
+        X_train, y_train,
         scoring = 'accuracy',
         cv = 3, # 3-fold
         n_jobs = -1 
     ).mean()
     return val
+    
+#ここで、…が現れないようにスペース2回程度押して>>>となればOK
+#ここで、ベイズ最適化、探したい範囲を決める
 
 randomforest_cv_bo = BayesianOptimization(
     randomforest_cv,
@@ -23,6 +30,7 @@ randomforest_cv_bo = BayesianOptimization(
     'min_samples_split': (2, 25),
     'max_features': (0.1, 0.999)}
 )
+#ここで、…が現れないようにスペース2回程度押して>>>となればOK
 
 gp_params = {"alpha": 1e-5}
 randomforest_cv_bo.maximize(n_iter=50, **gp_params)
