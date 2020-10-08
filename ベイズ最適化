@@ -1,30 +1,30 @@
+from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import RandomForestClassifier
 from bayes_opt import BayesianOptimization
 
-def RandomizedSearchCV_evaluate(n_jobs, min_samples_split, max_depth):
+def randomforest_cv(n_estimators, min_samples_split, max_features):
+    val = cross_val_score(
+        RandomForestClassifier(
+            n_estimators=int(n_estimators),
+            min_samples_split=int(min_samples_split),
+            max_features=max_features,
+            random_state=0
+        ),
+        train_x, train_y,
+        scoring = 'accuracy',
+        cv = 3, # 3-fold
+        n_jobs = -1 # use all CPUs
+    ).mean()
+    return val
 
-params = {
-     'n_estimators'      : [5, 10, 20, 30, 50, 100, 300],
-      'max_features'      : [3, 5, 10, 15, 20],
-      'random_state'      : [2525],
-      'n_jobs'            : [1],
-      'min_samples_split' : [3, 5, 10, 15, 20, 25, 30, 40, 50, 100],
-      'max_depth'         : [3, 5, 10, 15, 20, 25, 30, 40, 50, 100]
-}
+randomforest_cv_bo = BayesianOptimization(
+    randomforest_cv,
+    {'n_estimators': (10, 250),
+    'min_samples_split': (2, 25),
+    'max_features': (0.1, 0.999)}
+)
 
-rs = RandomizedSearchCV(RandomForestClassifier(),
-                        params, 
-                        cv=3,            
-                        verbose=True,   
-                        n_jobs=-1) 
-                        
-rs.set_params(**params)
-rs.fit(X_train,
-y_train,
-early_stopping_rounds=50,
-eval_set=[(X_test, y_test)],
-eval_metric='error',
-verbose=0)
-
-pred = rs.predict(X_test)
-score = accuracy_score(y_test, pred)
-return score
+gp_params = {"alpha": 1e-5}
+randomforest_cv_bo.maximize(n_iter=50, **gp_params)
+print(randomforest_cv_bo.res['max']['max_val'])
+print(randomforest_cv_bo.res['max']['max_params'])
