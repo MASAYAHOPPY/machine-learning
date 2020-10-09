@@ -11,8 +11,6 @@ dot_data = tree.export_graphviz(estimator,
 				out_file=None,
 				filled=True,
 				rounded=True,
-				feature_names=features,
-				class_names=T11,
 				special_characters=True)
 graph = pdp.graph_from_dot_data(dot_data)
 graph.write_png(filename)
