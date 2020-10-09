@@ -6,18 +6,16 @@ from sklearn import tree
 import pydotplus as pdp
 
 estimator = model.estimators_[0]
-    filename = "./tree.png"
-    dot_data = tree.export_graphviz(
-				estimator,
+filename = "./tree.png"
+dot_data = tree.export_graphviz(estimator,
 				out_file=None,
 				filled=True,
 				rounded=True,
 				feature_names=features,
-				class_names=iris.target_names,
-				special_characters=True
-				)
-    graph = pdp.graph_from_dot_data(dot_data)
-    graph.write_png(filename)
+				class_names=T11,
+				special_characters=True)
+graph = pdp.graph_from_dot_data(dot_data)
+graph.write_png(filename)
 
 if __name__ == "__main__":
     main()
