@@ -18,4 +18,22 @@ estimator = [
 pipe = Pipeline(estimator)
 pipe.fit(X_train, y_train)
 pipe.score(X_test, y_test)
-#select=モデル、scaler＝モデルの比率変更、clf＝モデルの
+
+predict = pipe_smote.predict(X_test)
+f1_score(Y_test, predict)
+
+#select=モデル、scaler＝モデルの比率変更、clf＝比率変更のためのアルゴリズム
+
+＜Over sampling>
+from imblearn.over_sampling import SMOTE 
+sm = SMOTE(sampling_strategy='auto', k_neighbors=1, n_jobs=1, random_state=42, ratio=None)
+estimator = [
+    ('sm', sm),
+    ('select', select),
+    ('scaler', scaler),
+    ('clf', clf)
+]
+pipe_smote = Pipeline(estimator)
+pipe_smote.fit(X_train, Y_train)
+predict = pipe_smote.predict(X_test)
+f1_score(Y_test, predict)
