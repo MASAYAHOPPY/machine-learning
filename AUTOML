@@ -1,6 +1,6 @@
 from autogluon import TabularPrediction as task 
-predictor = task.fit(X_train, y_train)
-predictions = predictor.predict(X_test, y_test)
+predictor = task.fit(Substructure3T11.csv", label="T11")
+predictions = predictor.predict("test.csv") 
 
 #AutoGluonの読み込み
 #学習
