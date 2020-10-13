@@ -1,0 +1,7 @@
+from autogluon import TabularPrediction as task 
+predictor = task.fit(X_train, y_train)
+predictions = predictor.predict(X_test, y_test)
+
+#AutoGluonの読み込み
+#学習
+#テストデータに対する予測
