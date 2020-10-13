@@ -1,0 +1,15 @@
+#モデルの作製（pipelineで定義）
+select = SelectFromModel(RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42))
+scaler = StandardScaler()
+clf = LogisticRegression()
+
+estimator = [
+    ('select',select),
+    ('scaler',scaler),
+    ('clf',clf)
+]
+
+pipe = Pipeline(estimator)
+pipe.fit(X_train, Y_train)
+pipe.score(X_test, Y_test)
+#select=モデル、scaler＝モデルの比率変更、clf＝モデルの
