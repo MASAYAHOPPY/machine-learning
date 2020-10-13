@@ -16,6 +16,6 @@ estimator = [
 ]
 
 pipe = Pipeline(estimator)
-pipe.fit(X_train, Y_train)
-pipe.score(X_test, Y_test)
+pipe.fit(X_train, y_train)
+pipe.score(X_test, y_test)
 #select=モデル、scaler＝モデルの比率変更、clf＝モデルの
