@@ -1,5 +1,5 @@
 from autogluon import TabularPrediction as task 
-predictor = task.fit(Substructure3T11.csv", label="T11")
+predictor = task.fit("Substructure3T11.csv",label="T11")
 predictions = predictor.predict("test.csv") 
 
 #AutoGluonの読み込み
