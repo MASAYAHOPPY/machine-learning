@@ -35,5 +35,6 @@ estimator = [
 ]
 pipe_smote = Pipeline(estimator)
 pipe_smote.fit(X_train, y_train)
+#neighberエラーが発生、不均衡すぎるデータは適用できない…
 predict = pipe_smote.predict(X_test)
 f1_score(y_test, predict)
