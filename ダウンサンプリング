@@ -8,7 +8,7 @@ from imblearn.under_sampling import RandomUnderSampler
 positive_count_train = y_train.value_counts()[0]
 strategy = {"1":positive_count_train, "2":positive_count_train*10, "3":positive_count_train*10, "4":positive_count_train*10, "6":positive_count_train*10, "a":positive_count_train*10, "b":positive_count_train*10, "c":positive_count_train*10, "d":positive_count_train*10, "e":positive_count_train*10, "m":positive_count_train*10, "n":positive_count_train*10}
 #トレーニング数
-#
+#トレーニング数の中で、””に書かれた文字が該当する数
 
 select = SelectFromModel(RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42))
 scaler = StandardScaler()
@@ -26,15 +26,14 @@ pipe_smote.fit(X_train, y_train)
 #pipeによるモデルの作製
 #rus=アンダーサンプリング
 
-
-
-
-
 X_resampled, y_resampled = rus.fit_resample(X_train, y_train)
 y_resampled.value_counts()
+
+#モデルトレーニング
 
 y_pred = piperus.predict(X_test)
 from sklearn.metrics import classification_report
 print(classification_report(y_test, y_pred)
 
+#混同行列
 
