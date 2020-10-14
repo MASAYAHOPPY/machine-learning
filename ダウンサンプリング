@@ -1,0 +1,8 @@
+from imblearn.under_sampling import RandomUnderSampler
+
+positive_count_train = y_train.value_counts()[0]
+strategy = {0:positive_count_train, 1:positive_count_train*2, 2:positive_count_train*5}
+
+rus = RandomUnderSampler(random_state=0, sampling_strategy = strategy)
+X_resampled, y_resampled = rus.fit_resample(X_train, y_train)
+y_resampled.value_counts()
