@@ -6,7 +6,7 @@ from imblearn.pipeline import Pipeline
 from imblearn.under_sampling import RandomUnderSampler
 
 positive_count_train = y_train.value_counts()[0]
-strategy = strategy = {1:positive_count_train, 2:positive_count_train*7, 3:positive_count_train*100, 4:positive_count_train*80, 6:positive_count_train*400, "a":positive_count_train*4000, "b":positive_count_train*15, "c":positive_count_train*50, "d":positive_count_train*200, "e":positive_count_train*25000, "m":positive_count_train*350, "n":positive_count_train*30}
+strategy = {"1":positive_count_train, "2":positive_count_train*10, "3":positive_count_train*10, "4":positive_count_train*10, "6":positive_count_train*10, "a":positive_count_train*10, "b":positive_count_train*10, "c":positive_count_train*10, "d":positive_count_train*10, "e":positive_count_train*10, "m":positive_count_train*10, "n":positive_count_train*10}
 #トレーニング数
 #
 
