@@ -3,7 +3,7 @@ from sklearn.feature_selection import SelectFromModel
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from imblearn.pipeline import Pipeline 
-from imblearn.under_sampling import RandomOverSampler
+from imblearn.over_sampling import RandomOverSampler
 
 ＃[]に引数を指定して、一つ一つの答えの文字列の数を数えたのちに、starategyに代入
 positive_count_train = y_train.value_counts()["1"]
