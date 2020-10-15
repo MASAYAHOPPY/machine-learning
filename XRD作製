@@ -3,6 +3,7 @@ from pymatgen.analysis.diffraction.xrd import XRDCalculator
 from IPython.display import Image, display
 %matplotlib inline
 
+# pymatgenソフトによる計算
 # 格子定数
   空間群
  (空間群、原子の種類、原子位置）
