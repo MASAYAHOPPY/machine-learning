@@ -5,10 +5,18 @@ from sklearn.linear_model import LogisticRegression
 from imblearn.pipeline import Pipeline 
 from imblearn.under_sampling import RandomUnderSampler
 
-positive_count_train = y_train.value_counts()[0]
+＃[]に引数を指定して、一つ一つの答えの文字列の数を数えたのちに、starategyに代入
+positive_count_train = y_train.value_counts()["1"]
+print(positive_count_train)
+strategy = {"1":10000, "2":8382, "3":578, "4":805, "6":169, "a":20, "b":3686, "c":1088, "d":240, "e":6, "m":141, "n":1637}
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+＃（※少数サンプル数＊X倍）サブの方法
+positive_count_train = y_train.value_counts()[1]
 strategy = {"1":positive_count_train, "2":positive_count_train*10, "3":positive_count_train*10, "4":positive_count_train*10, "6":positive_count_train*10, "a":positive_count_train*10, "b":positive_count_train*10, "c":positive_count_train*10, "d":positive_count_train*10, "e":positive_count_train*10, "m":positive_count_train*10, "n":positive_count_train*10}
 #トレーニング数
 #トレーニング数の中で、””に書かれた文字が該当する数
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 select = SelectFromModel(RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42))
 scaler = StandardScaler()
