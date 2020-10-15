@@ -8,7 +8,7 @@ from imblearn.under_sampling import RandomUnderSampler
 ＃[]に引数を指定して、一つ一つの答えの文字列の数を数えたのちに、starategyに代入
 positive_count_train = y_train.value_counts()["1"]
 print(positive_count_train)
-strategy = {"1":10000, "2":8382, "3":578, "4":805, "6":169, "a":20, "b":3686, "c":1088, "d":240, "e":6, "m":141, "n":1637}
+strategy = {"1":56748, "2":8382, "3":578, "4":805, "6":169, "a":20, "b":3686, "c":1088, "d":240, "e":6, "m":141, "n":1637}
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 ＃（※少数サンプル数＊X倍）サブの方法
