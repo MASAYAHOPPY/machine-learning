@@ -20,7 +20,7 @@ strategy = {"1":positive_count_train, "2":positive_count_train*10, "3":positive_
 
 select = SelectFromModel(RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42))
 scaler = StandardScaler()
-clf = LogisticRegression()
+clf = RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42)
 rus = RandomUnderSampler(random_state=0, sampling_strategy = strategy)
 
 estimator = [
@@ -36,6 +36,9 @@ pipe_rus.fit(X_train, y_train)
 
 X_resampled, y_resampled = rus.fit_resample(X_train, y_train)
 y_resampled.value_counts()
+model = RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42)
+model.fit(X_resampled, y_resampled)
+y_pred = model.predict(X_test)
 
 #モデルトレーニング
 
