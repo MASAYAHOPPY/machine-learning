@@ -6,5 +6,5 @@ filename = 'A.sav'
 pickle.dump(model, open(filename, 'wb'))
 # 保存したモデルをロードする
 loaded_model = pickle.load(open(filename, 'rb'))
-result = loaded_model.score(X_test, Y_test)
+result = loaded_model.score(X_test, y_test)
 print(result)
