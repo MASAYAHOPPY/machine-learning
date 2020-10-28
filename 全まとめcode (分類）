@@ -61,3 +61,16 @@ print(classification_report(y_test, y_pred))
 importance = pd.DataFrame({ 'descripter' :X_train.columns, 'importance' :model.feature_importances_})
 importance
 importance.to_csv("importance.csv", sep=",")
+
+＜新データ予測＞
+import csv
+c=y_pred
+with open('test.csv','w') as f:
+...  writer = csv.writer(f)
+...  writer.writerows(c)
+#
+csv読み込み
+cをy_predとする。
+test.csvをfと定義
+fをWriterで定義
+Writerの行にcを定義
