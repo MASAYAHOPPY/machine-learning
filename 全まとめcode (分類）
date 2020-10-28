@@ -66,8 +66,8 @@ importance.to_csv("importance.csv", sep=",")
 import csv
 c=y_pred
 with open('test.csv','w') as f:
-writer = csv.writer(f)
-writer.writerows(c)
+ writer = csv.writer(f)
+ writer.writerows(c)
 #
 csv読み込み
 cをy_predとする。
