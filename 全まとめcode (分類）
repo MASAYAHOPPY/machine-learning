@@ -64,7 +64,17 @@ importance.to_csv("importance.csv", sep=",")
 
 ＜新データ予測＞
 import csv
-c=y_pred
+
+df2 = pd.read_excel('predict.xlsx')
+df2.isnull().sum()
+df2.dropna(axis = 'columns')
+df2.dropna(inplace = True)
+df2.isnull().sum()
+
+X2 = X2.astype('str')
+y_pred2 = model.predict(X2)
+
+c=y_pred2
 with open('test.csv','w') as f:
  writer = csv.writer(f)
  writer.writerows(c)
