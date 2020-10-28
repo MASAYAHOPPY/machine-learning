@@ -71,8 +71,8 @@ df2.dropna(axis = 'columns')
 df2.dropna(inplace = True)
 df2.isnull().sum()
 
-X2 = X2.astype('str')
-y_pred2 = model.predict(X2)
+df2 = df2.astype('str')
+y_pred2 = model.predict(df2)
 
 c=y_pred2
 with open('test.csv','w') as f:
