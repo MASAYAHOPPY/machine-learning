@@ -10,7 +10,6 @@ os.getcwd()
 df = pd.read_excel('Substructure3T11.xlsx')
 
 df.isnull().sum()
-df.dropna(axis = 'columns')
 df.dropna(inplace = True)
 df.isnull().sum()
 
