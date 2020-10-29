@@ -10,7 +10,6 @@ os.getcwd()
 df = pd.read_excel('HOMOLUMO.xlsx')
 
 df.isnull().sum()
-df.dropna(axis = 'columns')
 df.dropna(inplace = True)
 df.isnull().sum()
 
