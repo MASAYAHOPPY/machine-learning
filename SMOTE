@@ -19,7 +19,7 @@ pipe = Pipeline(estimator)
 pipe.fit(X_train, y_train)
 pipe.score(X_test, y_test)
 
-predict = pipe_smote.predict(X_test)
+predict = pipe.predict(X_test)
 f1_score(y_test, predict)
 
 #select=モデル、scaler＝モデルの比率変更、clf＝比率変更のためのアルゴリズム
