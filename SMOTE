@@ -1,9 +1,12 @@
+＜モデルの作成方法＞
+
 #モデルの作製（pipelineで定義）
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import SelectFromModel
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from imblearn.pipeline import Pipeline 
+from sklearn.metrics import classification_report
 
 select = SelectFromModel(RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42))
 scaler = StandardScaler()
@@ -20,21 +23,23 @@ pipe.fit(X_train, y_train)
 pipe.score(X_test, y_test)
 
 predict = pipe.predict(X_test)
-f1_score(y_test, predict)
+print(classification_report(y_test, predict))
 
 #select=モデル、scaler＝モデルの比率変更、clf＝比率変更のためのアルゴリズム
 
 ＜Over sampling>
 from imblearn.over_sampling import SMOTE 
 sm = SMOTE(sampling_strategy='auto', k_neighbors=1, n_jobs=1, random_state=42)
+
 estimator = [
     ('sm', sm),
     ('select', select),
     ('scaler', scaler),
     ('clf', clf)
 ]
-pipe_smote = Pipeline(estimator)
-pipe_smote.fit(X_train, y_train)
+pipe = Pipeline(estimator)
+pipe.fit(X_train, y_train)
+
 #neighberエラーが発生、不均衡すぎるデータは適用できない…
-predict = pipe_smote.predict(X_test)
-f1_score(y_test, predict)
+predict = pipe.predict(X_test)
+print(classification_report(y_test, predict))
