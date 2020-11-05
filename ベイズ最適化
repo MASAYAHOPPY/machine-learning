@@ -30,9 +30,18 @@ randomforest_cv_bo = BayesianOptimization(
     'min_samples_split': (2, 25),
     'max_features': (0.1, 0.999)}
 )
-#ここで、…が現れないようにスペース2回程度押して>>>となればOK
 
 gp_params = {"alpha": 1e-5}
 randomforest_cv_bo.maximize(n_iter=50, **gp_params)
-print(randomforest_cv_bo.res['max']['max_val'])
-print(randomforest_cv_bo.res['max']['max_params'])
+
+c=randomforest_cv_bo.res
+rev = c
+import csv
+with open('data.csv', 'w') as csvfile:
+...   fields = ['target', 'max_features', 'min_samples_split', 'n_estimators']
+...   writer = csv.DictWriter(csvfile, fieldnames=fields, lineterminator='\n')
+...   writer.writeheader()
+...   for row in rev:
+...     writer.writerow({fields[0]: row[fields[0]], **row['params']})
+
+#　c=rev ,ベイズ最適化の結果をdata.csvに出力
