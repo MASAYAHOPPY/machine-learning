@@ -1,0 +1,33 @@
+from sklearn import metrics
+
+label = dat01['Class'].as_matrix().reshape(len(dat01),1)
+features = dat01.drop(['Time','Amount','Class'],axis=1).as_matrix()
+
+X = tf.placeholder(tf.float32,[None,28])
+Y = tf.placeholder(tf.float32,[None, 1])
+
+w0 = tf.Variable(tf.zeros([28,1]))
+b0 = tf.Variable(tf.zeros([1]))
+
+f0 = tf.matmul(X,w0) + b0
+p0 = tf.sigmoid(f0)
+
+cost = -tf.reduce_sum(Y*tf.log(p0)*577.88 + (1-Y)*tf.log(1-p0))  # 損失関数
+train_step = tf.train.AdamOptimizer().minimize(cost)              # 最適化手法
+ 
+# 初期設定
+sess = tf.Session()
+sess.run(tf.global_variables_initializer())
+
+
+i = 0
+for _ in range(280):
+    i += 1
+    sess.run(train_step, feed_dict={X : features , Y : label})
+    if i % 40 == 0:
+        loss_val = sess.run(cost, feed_dict={X : features , Y : label})
+        predict = sess.run(p0 , feed_dict={X : features , Y : label})
+        pre_label = [0 if x<0.5 else 1 for x in predict]
+        acc_val = metrics.accuracy_score(pre_label,label)         # 予測結果の評価
+        print ('Step: %d,  loss: %f,  acc; %f'
+               % (i,  loss_val , acc_val))
