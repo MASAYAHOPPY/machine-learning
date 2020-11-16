@@ -25,6 +25,9 @@ from sklearn.metrics import r2_score
 model = RandomForestRegressor(n_estimators=100)
 model.fit(X_train, y_train)
 
+#randomforest()で出力でできる
+#計算してないように見えるけどモデルはできてる
+
 # 予測値を計算
 y_train_pred = model.predict(X_train)
 y_test_pred = model.predict(X_test)
