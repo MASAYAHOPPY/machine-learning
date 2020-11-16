@@ -1,5 +1,5 @@
 from sklearn.model_selection import cross_val_score
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestRegressor
 from bayes_opt import BayesianOptimization
 
 #def()の()の中身が調整したいハイパーパラメータである。
@@ -8,7 +8,7 @@ from bayes_opt import BayesianOptimization
 
 def randomforest_cv(n_estimators, min_samples_split, max_features):
     val = cross_val_score(
-        RandomForestClassifier(
+        RandomForestRegressor(
             n_estimators=int(n_estimators),
             min_samples_split=int(min_samples_split),
             max_features=max_features,
