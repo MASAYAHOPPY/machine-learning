@@ -1,0 +1,47 @@
+from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import RandomForestClassifier
+from bayes_opt import BayesianOptimization
+
+#def()の()の中身が調整したいハイパーパラメータである。
+#最初に交差検証しているので注意
+#次に、データの種類、ハイパーパラメータ、交差検証数、を定義する。
+
+def randomforest_cv(n_estimators, min_samples_split, max_features):
+    val = cross_val_score(
+        RandomForestClassifier(
+            n_estimators=int(n_estimators),
+            min_samples_split=int(min_samples_split),
+            max_features=max_features,
+            random_state=0
+        ),
+        X_train, y_train,
+        scoring = 'accuracy',
+        cv = 3, # 3-fold
+        n_jobs = -1 
+    ).mean()
+    return val
+    
+#ここで、…が現れないようにスペース2回程度押して>>>となればOK
+#ここで、ベイズ最適化、探したい範囲を決める
+
+randomforest_cv_bo = BayesianOptimization(
+    randomforest_cv,
+    {'n_estimators': (10, 250),
+    'min_samples_split': (2, 25),
+    'max_features': (0.1, 0.999)}
+)
+
+gp_params = {"alpha": 1e-5}
+randomforest_cv_bo.maximize(n_iter=50, **gp_params)
+
+c=randomforest_cv_bo.res
+rev = c
+import csv
+with open('data.csv', 'w') as csvfile:
+...   fields = ['target', 'max_features', 'min_samples_split', 'n_estimators']
+...   writer = csv.DictWriter(csvfile, fieldnames=fields, lineterminator='\n')
+...   writer.writeheader()
+...   for row in rev:
+...     writer.writerow({fields[0]: row[fields[0]], **row['params']})
+
+#　c=rev ,ベイズ最適化の結果をdata.csvに出力
