@@ -44,4 +44,4 @@ with open('data2.csv', 'w') as csvfile:
  for row in rev:
   writer.writerow({fields[0]: row[fields[0]], **row['params']})
 
-#　c=rev ,ベイズ最適化の結果をdata.csvに出力
+#　c=rev ,ベイズ最適化の結果をdata2.csvに出力
