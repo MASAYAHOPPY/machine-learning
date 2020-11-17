@@ -41,6 +41,9 @@ from sklearn.metrics import r2_score
 print('MSE train : %.3f, test : %.3f' % (r2_score(y_train, y_train_pred), r2_score(y_test, y_test_pred)) )
  
 # 残差プロット
+# 縦軸：トレーニング実測値-トレーニング推定値　横軸：トレーニング推定値
+# 縦軸：テスト実測値-テスト推定値　横軸：テスト推定値
+
 %matplotlib inline
 import matplotlib.pyplot as plt
 plt.figure(figsize = (10, 7))
