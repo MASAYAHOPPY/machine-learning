@@ -38,10 +38,10 @@ c=randomforest_cv_bo.res
 rev = c
 import csv
 with open('data.csv', 'w') as csvfile:
-...   fields = ['target', 'max_features', 'min_samples_split', 'n_estimators']
-...   writer = csv.DictWriter(csvfile, fieldnames=fields, lineterminator='\n')
-...   writer.writeheader()
-...   for row in rev:
-...     writer.writerow({fields[0]: row[fields[0]], **row['params']})
+ fields = ['target', 'max_features', 'min_samples_split', 'n_estimators']
+ writer = csv.DictWriter(csvfile, fieldnames=fields, lineterminator='\n')
+ writer.writeheader()
+ for row in rev:
+  writer.writerow({fields[0]: row[fields[0]], **row['params']})
 
 #　c=rev ,ベイズ最適化の結果をdata.csvに出力
