@@ -32,11 +32,13 @@ print('best score: {:0.3f}'.format(gs.score(X_test, y_test)))
 print('best params: {}'.format(gs.best_params_))
 print('best val score:  {:0.3f}'.format(gs.best_score_))
 
-＞＞＞＞＞＞＞＞＞＞＞＞＞
-[out]
-best score: 0.956
-best params: {'max_depth': 2, 'min_samples_leaf': 1}
-best val score:  0.955
-＞＞＞＞＞＞＞＞＞＞＞＞＞
+＜回帰＞
+gs = GridSearchCV(RandomForestRegressor(),
+                  search_params, 
+                  cv=3,            
+                  verbose=True,   
+                  n_jobs=-1) 
+
+
 
 
