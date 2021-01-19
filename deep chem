@@ -1,0 +1,62 @@
+import tensorflow as tf
+import deepchem as dc
+import numpy as np
+
+graph_featurizer = dc.feat.graph_features.ConvMolFeaturizer()
+loader = dc.data.data_loader.CSVLoader( tasks = ['Symmetry group'], smiles_field = "smiles", featurizer = graph_featurizer )
+dataset = loader.featurize( 'Deep.csv' )
+
+splitter = dc.splits.splitters.RandomSplitter()
+trainset, testset = splitter.train_test_split( dataset )
+ 
+hp = dc.molnet.preset_hyper_parameters
+param = hp.hps[ 'graphconvreg' ]
+print( param )
+
+n_feat = 75
+batch_size = 32
+ 
+graph_model = dc.nn.SequentialGraph( n_feat )
+ 
+graph_model.add( dc.nn.GraphConv( int( param[ 'n_filters' ]), n_feat, activation = 'relu' ) )
+graph_model.add( dc.nn.BatchNormalization( epsilon = 1e-5, mode = 1 ) )
+graph_model.add( dc.nn.GraphPool() )
+graph_model.add( dc.nn.BatchNormalization( epsilon = 1e-5, mode = 1 ) )
+graph_model.add( dc.nn.GraphGather( batch_size, activation = "linear" ) )
+
+with tf.Session() as sess:
+    model_graphconv = dc.models.MultitaskGraphRegressor( graph_model,
+    1,
+    n_feat,
+    batch_size = batch_size,
+    learning_rate = param[ 'learning_rate' ],
+    optimizer_type = 'adam',
+    beta1 = .9, beta2 = .999 )
+    model_graphconv.fit( trainset, nb_epoch = 10 )
+    
+test_scores = {}
+train_scores = {}
+regression_metric = dc.metrics.Metric( dc.metrics.mean_squared_error )
+test_scores[ 'graphconvreg' ] = model_graphconv.evaluate( testset, [ regression_metric ]  )
+train_scores[ 'graphconvreg' ] = model_graphconv.evaluate( trainset, [ regression_metric ]  )
+
+pred_train = model_graphconv.predict( trainset )
+pred_test = model_graphconv.predict( testset )
+ 
+y_train = np.array( trainset.y, dtype = np.float32 )
+y_test = np.array( testset.y, dtype = np.float32 )
+pred_train = np.array( pred_train, dtype=np.float32 )
+pred_test = np.array( pred_test, dtype=np.float32)
+  
+import matplotlib.pyplot as plt
+ 
+plt.figure()
+plt.scatter( y_train, pred_train, label = 'Train', c = 'blue' )
+plt.title( 'Neural Network Predictor' )
+plt.xlabel( 'Measured BV' )
+plt.ylabel( 'Predicted BV' )
+plt.scatter( y_test, pred_test, c = 'lightgreen', label = 'Test', alpha = 0.8 )
+plt.legend( loc = 4 )
+plt.show()
+
+
