@@ -13,8 +13,8 @@ df.isnull().sum()
 df.dropna(inplace = True)
 df.isnull().sum()
 
-X = df.drop('T11', axis=1)
-Y = df['T11']
+X = df.drop('Symmetry group', axis=1)
+Y = df['Symmetry group']
 X=X.astype('str')
 Y=Y.astype('str')
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
