@@ -10,7 +10,7 @@ os.chdir('D:/NEWCOD')
 os.getcwd()
 df = pd.read_excel('NEWMACCS.xlsx')
 
-df.drop(['b','c','alpha','beta','gamma'], axis=1,inplace=True)
+df.drop(['b','c','alpha','beta','gamma','V'], axis=1,inplace=True)
 df.isnull().sum()
 df.dropna(inplace = True)
 df.isnull().sum()
