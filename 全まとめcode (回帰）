@@ -5,16 +5,18 @@ import scipy as sp
 import pandas as pd
 from pandas import Series, DataFrame
 from sklearn.model_selection import train_test_split
-os.chdir('C:/Users/otyaz/OneDrive/Data')
-os.getcwd()
-df = pd.read_excel('HOMOLUMO.xlsx')
 
+os.chdir('D:/NEWCOD')
+os.getcwd()
+df = pd.read_excel('NEWMACCS.xlsx')
+
+df.drop(['b','c','alpha','beta','gamma'], axis=1,inplace=True)
 df.isnull().sum()
 df.dropna(inplace = True)
 df.isnull().sum()
 
-X = df.drop('HOMOLUMO', axis=1)
-Y = df['HOMOLUMO']
+X = df.drop('a', axis=1)
+Y = df['a']
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
 
 
