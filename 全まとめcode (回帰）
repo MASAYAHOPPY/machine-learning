@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 os.chdir('D:/NEWCOD')
 os.getcwd()
-df = pd.read_excel('NEWMACCS.xlsx')
+df = pd.read_excel('input.xlsx')
 
 df.drop(['b','c','alpha','beta','gamma','V'], axis=1,inplace=True)
 df.isnull().sum()
