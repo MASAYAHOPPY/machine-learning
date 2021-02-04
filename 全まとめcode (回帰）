@@ -6,7 +6,7 @@ import pandas as pd
 from pandas import Series, DataFrame
 from sklearn.model_selection import train_test_split
 
-os.chdir('D:/NEWCOD')
+os.chdir('D:')
 os.getcwd()
 df = pd.read_excel('input.xlsx')
 
