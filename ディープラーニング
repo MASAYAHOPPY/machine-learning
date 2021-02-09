@@ -15,19 +15,25 @@ from keras.optimizers import RMSprop
 from keras.optimizers import Adam
 
 import os
-os.chdir('D:/NEWCOD')
+os.chdir('D:/')
 os.getcwd()
 
-df = pd.read_csv("MACCS.csv",sep=";",header=0)
-X = df.drop("Symmetry group",axis=1)
-Y = df["Symmetry group"]
-X_train,X_test,y_train,y_test = train_test_split(X,Y,test_size=0.3)
+df = pd.read_excel("input.xlsx",sep=";",header=0)
+df.drop(['b','c','alpha','beta','gamma','V'], axis=1,inplace=True)
+
+df.isnull().sum()
+df.dropna(inplace = True)
+df.isnull().sum()
+
+X = df.drop('a', axis=1)
+Y = df['a']
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
 
 X_train = X_train.astype(np.float)
 X_test = X_test.astype(np.float)
 
-y_train = keras.utils.to_categorical(y_train,10)
-y_test = keras.utils.to_categorical(y_test,10)
+y_train = keras.utils.to_categorical(y_train,165)
+y_test = keras.utils.to_categorical(y_test,165)
 
 
 model = Sequential()
