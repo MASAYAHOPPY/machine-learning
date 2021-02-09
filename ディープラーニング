@@ -1,0 +1,84 @@
+
+from __future__ import print_function
+import pandas as pd
+from pandas import Series,DataFrame
+from sklearn import svm
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+import numpy as np
+import matplotlib.pyplot as plt
+import keras
+from keras.datasets import fashion_mnist
+from keras.models import Sequential
+from keras.layers import Dense, Dropout
+from keras.optimizers import RMSprop
+from keras.optimizers import Adam
+
+df = pd.read_csv("MACCS.csv",sep=";",header=0)
+X = df.drop("Symmetry group",axis=1)
+Y = df["Symmetry group"]
+X_train,X_test,y_train,y_test = train_test_split(X,Y,test_size=0.3)
+
+X_train = X_train.astype(np.float)
+X_test = X_test.astype(np.float)
+
+y_train = keras.utils.to_categorical(y_train,10)
+y_test = keras.utils.to_categorical(y_test,10)
+
+
+model = Sequential()
+model.add(Dense(50, activation='relu', input_shape=(11,)))
+model.add(Dropout(0.2))
+model.add(Dense(50, activation='relu', input_shape=(11,)))
+model.add(Dropout(0.2))
+model.add(Dense(50, activation='relu', input_shape=(11,)))
+model.add(Dropout(0.2))
+model.add(Dense(10, activation='softmax'))
+model.summary()
+print("\n")
+model.compile(loss='mean_squared_error',optimizer=RMSprop(),metrics=['accuracy'])
+history = model.fit(x_train, y_train,batch_size=200,epochs=1000,verbose=1,validation_data=(x_test, y_test))
+
+score = model.evaluate(x_test,y_test,verbose=1)
+print("\n")
+print("Test loss:",score[0])
+print("Test accuracy:",score[1])
+
+#予測値
+sample = [7.9, 0.35, 0.46, 5, 0.078, 15, 37, 0.9973, 3.35, 0.86, 12.8]
+print("\n")
+print("サンプルデータ")
+
+print(sample)
+
+sample = np.array(sample)
+predict = model.predict_classes(sample.reshape(1,-1),batch_size=1,verbose=0)
+
+print("\n")
+print("--予測値--")
+print(predict)
+print("\n")
+
+def plot_history(history):
+    # print(history.history.keys())
+
+    # 精度
+    plt.plot(history.history['acc'])
+    plt.plot(history.history['val_acc'])
+    plt.title('model accuracy')
+    plt.xlabel('epoch')
+    plt.ylabel('accuracy')
+    plt.legend(['acc', 'val_acc'], loc='lower right')
+    plt.show()
+
+    # 損失
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('model loss')
+    plt.xlabel('epoch')
+    plt.ylabel('loss')
+    plt.legend(['loss', 'val_loss'], loc='lower right')
+    plt.show()
+
+# 学習履歴をプロット
+plot_history(history)
