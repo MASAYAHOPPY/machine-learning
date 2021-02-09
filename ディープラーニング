@@ -14,6 +14,9 @@ from keras.layers import Dense, Dropout
 from keras.optimizers import RMSprop
 from keras.optimizers import Adam
 
+os.chdir('D:/NEWCOD')
+os.getcwd()
+
 df = pd.read_csv("MACCS.csv",sep=";",header=0)
 X = df.drop("Symmetry group",axis=1)
 Y = df["Symmetry group"]
@@ -37,7 +40,7 @@ model.add(Dense(10, activation='softmax'))
 model.summary()
 print("\n")
 model.compile(loss='mean_squared_error',optimizer=RMSprop(),metrics=['accuracy'])
-history = model.fit(x_train, y_train,batch_size=200,epochs=1000,verbose=1,validation_data=(x_test, y_test))
+history = model.fit(X_train, y_train,batch_size=200,epochs=1000,verbose=1,validation_data=(X_test, y_test))
 
 score = model.evaluate(x_test,y_test,verbose=1)
 print("\n")
