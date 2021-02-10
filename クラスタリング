@@ -12,7 +12,7 @@ from sklearn.cluster import KMeans
 
 os.chdir('D:/')
 os.getcwd()
-df = pd.read_excel('input.xlsx')
+df = pd.read_excel('input2.xlsx')
 
 model = preprocessing.MinMaxScaler() 
 model.fit(df)
