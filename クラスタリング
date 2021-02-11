@@ -13,6 +13,9 @@ from sklearn.cluster import KMeans
 os.chdir('D:/')
 os.getcwd()
 df = pd.read_excel('input2.xlsx')
+df.isnull().sum()
+df.dropna(inplace = True)
+df.isnull().sum()
 
 model = preprocessing.MinMaxScaler() 
 model.fit(df)
