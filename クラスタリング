@@ -22,7 +22,7 @@ df_model = pd.DataFrame(arr_model,columns=df.columns)
 sns.pairplot(df_model)
 
 pca = PCA(n_components=2)
-pca.fit(train_mms)
+pca.fit(df_model)
 arr_2d = pca.transform(df_model)
 train_2d = pd.DataFrame(arr_2d,columns=["pca_1","pca_2"])
 sns.scatterplot( x='pca_1', y='pca_2', data=train_2d)
