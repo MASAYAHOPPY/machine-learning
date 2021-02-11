@@ -18,7 +18,8 @@ model = preprocessing.MinMaxScaler()
 model.fit(df)
 arr_model = model.transform(df)
 
-df_model = pd.DataFrame(arr_model,columns=df[columns])
+feature_names=df[:0]
+df_model = pd.DataFrame(arr_model,columns="feature_names")
 sns.pairplot(train_model)
 
 
