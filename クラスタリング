@@ -32,8 +32,6 @@ pca.fit(df_model)
 arr_2d = pca.transform(df_model)
 train_2d = pd.DataFrame(arr_2d,columns=["pca_1","pca_2"])
 sns.scatterplot( x='pca_1', y='pca_2', data=train_2d)
-plt.show()
-
 
 kmeans = KMeans(n_clusters=3,random_state=0)
 kmeans.fit(train_2d)
