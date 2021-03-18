@@ -58,6 +58,6 @@ plt.scatter(y_test_pred, y_test_pred - y_test, c = 'blue', marker = 's', s = 35,
 plt.xlabel('Predicted values')
 plt.ylabel('Residuals')
 plt.legend(loc = 'upper left')
-plt.hlines(y = 0, xmin = -10, xmax = 50, lw = 2, color = 'red')
+plt.hlines(y = 0, xmin = -10, xmax = , lw = 2, color = 'red')
 plt.xlim([-10, 50])
 plt.show()
