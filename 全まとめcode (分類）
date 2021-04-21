@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 os.chdir('D:/kenkyu/inputdata')
 os.getcwd()
-df = pd.read_excel('MACCS2.xlsx')
+df = pd.read_excel('inputdata.xlsx')
 
 df.drop(['T4','T2','T3','BV'], axis=1,inplace=True)
 df.isnull().sum()
