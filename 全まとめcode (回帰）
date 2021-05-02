@@ -8,15 +8,13 @@ from sklearn.model_selection import train_test_split
 
 os.chdir('D:/')
 os.getcwd()
-df = pd.read_excel('input.xlsx')
+df = pd.read_excel('input.xlsx'
 
-df.drop(['b','c','alpha','beta','gamma','V'], axis=1,inplace=True)
-df.isnull().sum()
 df.dropna(inplace = True)
 df.isnull().sum()
 
-X = df.drop('a', axis=1)
-Y = df['a']
+X = df.drop('Cell volume', axis=1)
+Y = df['Cell volume']
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
 
 
