@@ -1,3 +1,9 @@
+pip uninstall scikit-learn
+pip install scikit-learn==0.22
+pip install tensorflow==1.14 (or pip install tensorflow-gpu==1.14 )
+conda install -c rdkit -c conda-forge rdkit deepchem==2.3.0
+#事前準備
+
 import tensorflow as tf
 import deepchem as dc
 import numpy as np
