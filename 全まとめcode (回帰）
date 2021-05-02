@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 os.chdir('D:/')
 os.getcwd()
-df = pd.read_excel('input.xlsx'
+df = pd.read_excel('inputdata.xlsx')
 
 df.dropna(inplace = True)
 df.isnull().sum()
