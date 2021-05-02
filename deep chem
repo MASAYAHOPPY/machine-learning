@@ -3,7 +3,7 @@ import deepchem as dc
 import numpy as np
 
 graph_featurizer = dc.feat.graph_features.ConvMolFeaturizer()
-loader = dc.data.data_loader.CSVLoader( tasks = ['SG'], smiles_field = "Smiles", featurizer = graph_featurizer )
+loader = dc.data.data_loader.CSVLoader( tasks = ['BV'], smiles_field = "Smiles", featurizer = graph_featurizer )
 dataset = loader.featurize( 'deepdata.csv' )
 
 splitter = dc.splits.splitters.RandomSplitter()
