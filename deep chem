@@ -3,8 +3,8 @@ import deepchem as dc
 import numpy as np
 
 graph_featurizer = dc.feat.graph_features.ConvMolFeaturizer()
-loader = dc.data.data_loader.CSVLoader( tasks = ['Symmetry group'], smiles_field = "smiles", featurizer = graph_featurizer )
-dataset = loader.featurize( 'Deep.csv' )
+loader = dc.data.data_loader.CSVLoader( tasks = ['SG'], smiles_field = "Smiles", featurizer = graph_featurizer )
+dataset = loader.featurize( 'deepdata.csv' )
 
 splitter = dc.splits.splitters.RandomSplitter()
 trainset, testset = splitter.train_test_split( dataset )
