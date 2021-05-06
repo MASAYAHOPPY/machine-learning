@@ -17,12 +17,9 @@ def read_data(input_file_path):
     featurizer = dc.feat.ConvMolFeaturizer()
     loader = dc.data.CSVLoader(tasks=prediction_tasks, smiles_field="Smiles", featurizer=featurizer)
     dataset = loader.featurize('deepdata.csv' , shard_size=8192)
-    
-    # Initialize transformers
     transformer = dc.trans.NormalizationTransformer(transform_w=True, dataset=dataset)
     print("About to transform data")
     dataset = transformer.transform(dataset)
-    #Randomly split into training and testing : 80-20 split.
     splitter = dc.splits.splitters.RandomSplitter()
     trainset,testset = splitter.train_test_split(dataset,frac_train=0.8)
     return trainset,testset
