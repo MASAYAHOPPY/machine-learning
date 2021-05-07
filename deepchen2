@@ -13,10 +13,10 @@ pad_batches = True
 tg = TensorGraph(batch_size=batch_size,learning_rate=0.0005,use_queue=False)
 prediction_tasks = ['V']
 
-def read_data('deepdata.csv'):
+def read_data(input_file_path='deepdata.csv'):
     featurizer = dc.feat.ConvMolFeaturizer()
     loader = dc.data.CSVLoader(tasks=prediction_tasks, smiles_field="Smiles", featurizer=featurizer)
-    dataset = loader.featurize('deepdata.csv' , shard_size=8192)
+    dataset = loader.featurize( input_file_path, shard_size=8192)
     transformer = dc.trans.NormalizationTransformer(transform_w=True, dataset=dataset)
     print("About to transform data")
     dataset = transformer.transform(dataset)
