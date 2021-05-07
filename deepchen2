@@ -23,3 +23,4 @@ def read_data('deepdata.csv'):
     splitter = dc.splits.splitters.RandomSplitter()
     trainset,testset = splitter.train_test_split(dataset,frac_train=0.8)
     return trainset,testset
+
