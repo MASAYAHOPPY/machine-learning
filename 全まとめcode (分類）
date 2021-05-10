@@ -6,7 +6,7 @@ import pandas as pd
 from pandas import Series, DataFrame
 from sklearn.model_selection import train_test_split
 
-os.chdir('D:/kenkyu/inputdata')
+os.chdir('D:/kenkyu/Padeldata54010/FingerPrint')
 os.getcwd()
 df = pd.read_excel('inputdata.xlsx')
 
