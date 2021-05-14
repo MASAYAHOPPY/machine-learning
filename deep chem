@@ -42,7 +42,7 @@ graph_conv = GraphConvModel(1,
                             batch_size=50,
                             mode="regression")
                             
-metric = dc.metrics.Metric(dc.metrics.pearson_r2_score)
+metric = deepchem.metrics.Metric(dc.metrics.pearson_r2_score)
 graph_conv.fit(train, nb_epoch=10)
 graph_conv.fit(train, nb_epoch=10)
 train_scores = graph_conv.evaluate(train, [metric], [normalizer])
