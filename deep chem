@@ -21,7 +21,7 @@ os.chdir('D:/kenkyu/inputdata')
 os.getcwd()
 
 graph_featurizer = dc.feat.graph_features.ConvMolFeaturizer()
-loader = dc.data.data_loader.CSVLoader( tasks = ['BV'], smiles_field = "Smiles", featurizer = graph_featurizer )
+loader = dc.data.data_loader.CSVLoader( tasks = ['V'], smiles_field = "Smiles", featurizer = graph_featurizer )
 dataset = loader.featurize( 'deepdata.csv' )
 
 splitter = dc.splits.splitters.RandomSplitter()
