@@ -37,7 +37,7 @@ train = normalizer.transform(train)
 test = normalizer.transform(valid)
 
 
-from dc.models import GraphConvModel
+from deepchem.models import GraphConvModel
 graph_conv = GraphConvModel(1,
                             batch_size=50,
                             mode="regression")
