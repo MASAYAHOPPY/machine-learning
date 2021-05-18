@@ -13,9 +13,9 @@ from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 
 
-os.chdir('D:/')
+os.chdir('D:/kenkyu/inputdata')
 os.getcwd()
-df = pd.read_excel('input2.xlsx')
+df = pd.read_excel('inputdata.xlsx')
 df.isnull().sum()
 df.dropna(inplace = True)
 df.isnull().sum()
