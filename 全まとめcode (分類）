@@ -10,7 +10,7 @@ os.chdir('D:/kenkyu/Padeldata54010/')
 os.getcwd()
 df = pd.read_excel('inputdata.xlsx')
 
-df.drop(['T4','T3','T2','T1'], axis=1,inplace=True)
+df.drop(['T3','T2','T1'], axis=1,inplace=True)
 df.isnull().sum()
 df.dropna(inplace = True)
 df.isnull().sum()
