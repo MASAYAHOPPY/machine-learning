@@ -22,7 +22,7 @@ Y=Y.astype('str')
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
 
 
-＜k-近傍法（k-NN）＞
+#＜k-近傍法（k-NN）＞
 from sklearn.neighbors import KNeighborsClassifier
 model = KNeighborsClassifier(n_neighbors=3)
 model.fit(X_train, y_train)
@@ -32,7 +32,7 @@ y_pred = model.predict(X_test)
 from sklearn.metrics import classification_report
 print(classification_report(y_test, y_pred))
 
-＜ラムダムフォレスト＞
+#＜ラムダムフォレスト＞
 from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42)
 model.fit(X_train, y_train)
@@ -42,7 +42,7 @@ y_pred = model.predict(X_test)
 from sklearn.metrics import classification_report
 print(classification_report(y_test, y_pred))
 
-＜サポートベクターマシン（SVM）＞
+#＜サポートベクターマシン（SVM）＞
 from sklearn.svm import LinearSVC
 model = LinearSVC()
 model.fit(X_train, y_train)
@@ -52,7 +52,7 @@ y_pred = model.predict(X_test)
 from sklearn.metrics import classification_report
 print(classification_report(y_test, y_pred))
 
-＜ロジスティック回帰＞
+#＜ロジスティック回帰＞
 from sklearn.linear_model import LogisticRegression
 model = LogisticRegression()
 model.fit(X_train, y_train)
@@ -62,12 +62,15 @@ y_pred = model.predict(X_test)
 from sklearn.metrics import classification_report
 print(classification_report(y_test, y_pred))
 
-＜決定木＞
+#＜決定木＞
 from sklearn.tree import DecisionTreeClassifier
 model = DecisionTreeClassifier(max_depth=3)
 model.fit(X_train, y_train)
 print("train score:",model.score(X_train,y_train))
 print("test score:",model.score(X_test,y_test))
+y_pred = model.predict(X_test)
+from sklearn.metrics import classification_report
+print(classification_report(y_test, y_pred))
 
 ＜混同行列＞
 y_pred = model.predict(X_test)
