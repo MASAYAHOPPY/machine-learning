@@ -8,15 +8,15 @@ from sklearn.model_selection import train_test_split
 
 os.chdir('D:/kenkyu/Padeldata54010/')
 os.getcwd()
-df = pd.read_excel('FP.xlsx')
+df = pd.read_excel('inputdata.xlsx')
 
-df.drop(['T4','T2','T3','BV'], axis=1,inplace=True)
+df.drop(['T4','T3','T2','T1'], axis=1,inplace=True)
 df.isnull().sum()
 df.dropna(inplace = True)
 df.isnull().sum()
 
-X = df.drop('T1', axis=1)
-Y = df['T1']
+X = df.drop('BV', axis=1)
+Y = df['BV']
 X=X.astype('str')
 Y=Y.astype('str')
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
