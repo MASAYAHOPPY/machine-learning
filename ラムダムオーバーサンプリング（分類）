@@ -26,6 +26,8 @@ print(classification_report(y_test, y_pred))
 #pipeによるモデルの作製
 #rus=アンダーサンプリング
 #混同行列
+#sttategyは分類の個数を入れる。sklearn更新の必要性あり、基本的にはclfにモデルセットすればOK
+
 
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
