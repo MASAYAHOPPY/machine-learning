@@ -6,9 +6,9 @@ import pandas as pd
 from pandas import Series, DataFrame
 from sklearn.model_selection import train_test_split
 
-os.chdir('D:/kenkyu/Padeldata54010/')
+os.chdir('D:/kenkyu/Padeldata54010/last/')
 os.getcwd()
-df = pd.read_excel('inputdata.xlsx')
+df = pd.read_excel('FP.xlsx')
 
 df.drop(['T3','T2','T1'], axis=1,inplace=True)
 df.isnull().sum()
