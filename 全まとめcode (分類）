@@ -34,7 +34,7 @@ print(classification_report(y_test, y_pred))
 
 #＜ラムダムフォレスト＞
 from sklearn.ensemble import RandomForestClassifier
-model = RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42)
+model = RandomForestClassifier()
 model.fit(X_train, y_train)
 print("train score:",model.score(X_train,y_train))
 print("test score:",model.score(X_test,y_test))
@@ -64,7 +64,7 @@ print(classification_report(y_test, y_pred))
 
 #＜決定木＞
 from sklearn.tree import DecisionTreeClassifier
-model = DecisionTreeClassifier(max_depth=3)
+model = DecisionTreeClassifier()
 model.fit(X_train, y_train)
 print("train score:",model.score(X_train,y_train))
 print("test score:",model.score(X_test,y_test))
