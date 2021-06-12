@@ -1,0 +1,231 @@
+import os
+import numpy as np
+import numpy.random as random
+import scipy as sp
+import pandas as pd
+from pandas import Series, DataFrame
+from sklearn.model_selection import train_test_split
+
+os.chdir('D:/kenkyu/Padeldata54010/last/')
+os.getcwd()
+df = pd.read_excel('FP.xlsx')
+
+df.drop(['T2','T1','T3'], axis=1,inplace=True)
+df.isnull().sum()
+df.dropna(inplace = True)
+df.isnull().sum()
+
+X = df.drop('BV', axis=1)
+Y = df['BV']
+X=X.astype('str')
+Y=Y.astype('str')
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("FP",file=f)
+ print("BV",file=f)
+ print("RFtrain score:",model.score(X_train,y_train),file=f)
+ print("RFtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+from sklearn.svm import LinearSVC
+from sklearn.metrics import classification_report
+model = LinearSVC()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("SVCtrain score:",model.score(X_train,y_train),file=f)
+ print("SVCtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+model = LogisticRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("LRtrain score:",model.score(X_train,y_train),file=f)
+ print("LRtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import classification_report
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("DTtrain score:",model.score(X_train,y_train),file=f)
+ print("DTtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+df = pd.read_excel('FP.xlsx')
+
+df.drop(['T2','T3','BV'], axis=1,inplace=True)
+df.isnull().sum()
+df.dropna(inplace = True)
+df.isnull().sum()
+
+X = df.drop('T1', axis=1)
+Y = df['T1']
+X=X.astype('str')
+Y=Y.astype('str')
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("T1",file=f)
+ print("RFtrain score:",model.score(X_train,y_train),file=f)
+ print("RFtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+from sklearn.svm import LinearSVC
+from sklearn.metrics import classification_report
+model = LinearSVC()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("SVCtrain score:",model.score(X_train,y_train),file=f)
+ print("SVCtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+model = LogisticRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("LRtrain score:",model.score(X_train,y_train),file=f)
+ print("LRtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import classification_report
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("DTtrain score:",model.score(X_train,y_train),file=f)
+ print("DTtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+df = pd.read_excel('FP.xlsx')
+
+df.drop(['T1','T3','BV'], axis=1,inplace=True)
+df.isnull().sum()
+df.dropna(inplace = True)
+df.isnull().sum()
+
+X = df.drop('T2', axis=1)
+Y = df['T2']
+X=X.astype('str')
+Y=Y.astype('str')
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("T2",file=f)
+ print("RFtrain score:",model.score(X_train,y_train),file=f)
+ print("RFtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+from sklearn.svm import LinearSVC
+from sklearn.metrics import classification_report
+model = LinearSVC()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("SVCtrain score:",model.score(X_train,y_train),file=f)
+ print("SVCtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+model = LogisticRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("LRtrain score:",model.score(X_train,y_train),file=f)
+ print("LRtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import classification_report
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("DTtrain score:",model.score(X_train,y_train),file=f)
+ print("DTtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+
+df = pd.read_excel('FP.xlsx')
+
+df.drop(['T1','T2','BV'], axis=1,inplace=True)
+df.isnull().sum()
+df.dropna(inplace = True)
+df.isnull().sum()
+
+X = df.drop('T3', axis=1)
+Y = df['T3']
+X=X.astype('str')
+Y=Y.astype('str')
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("T3",file=f)
+ print("RFtrain score:",model.score(X_train,y_train),file=f)
+ print("RFtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+from sklearn.svm import LinearSVC
+from sklearn.metrics import classification_report
+model = LinearSVC()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("SVCtrain score:",model.score(X_train,y_train),file=f)
+ print("SVCtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+model = LogisticRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("LRtrain score:",model.score(X_train,y_train),file=f)
+ print("LRtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import classification_report
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+with open('file.txt', 'a') as f:
+ print("DTtrain score:",model.score(X_train,y_train),file=f)
+ print("DTtest score:",model.score(X_test,y_test),file=f)
+ print(classification_report(y_test, y_pred),file=f)
+
+
+
+  
