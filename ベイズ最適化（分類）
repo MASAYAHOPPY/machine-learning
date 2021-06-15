@@ -5,6 +5,7 @@ from bayes_opt import BayesianOptimization
 #def()の()の中身が調整したいハイパーパラメータである。
 #最初に交差検証しているので注意
 #次に、データの種類、ハイパーパラメータ、交差検証数、を定義する。
+#最初にモデルをdef形式で作成し、保存する。次に保存したモデルにベイズ最適化という流れ
 
 def randomforest_cv(n_estimators, min_samples_split, max_features):
     val = cross_val_score(
