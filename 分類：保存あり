@@ -1,3 +1,6 @@
+#FPを全置換して違うファイルと置き換える。
+#保存ファイルはfile.txtとなっているので注意する。
+
 import os
 import numpy as np
 import numpy.random as random
