@@ -1,5 +1,6 @@
 #FPを全置換して違うファイルと置き換える。
 #保存ファイルはfile.txtとなっているので注意する。
+#このコードでBV~T3まですべてのACCURACYとF1-scoreを導出可能
 
 import os
 import numpy as np
