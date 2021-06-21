@@ -1,1 +1,4 @@
-
+for a in range(0,4,1):
+ l=['AP','ES','ET','FP']
+ b=l.pop[a]
+ print(b)
