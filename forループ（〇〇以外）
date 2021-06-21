@@ -1,0 +1,4 @@
+for a in range(0,4,1):
+ l=['BV','T1','T2','T3']
+ del l[a]
+ print(l)
