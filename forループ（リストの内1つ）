@@ -1,4 +1,9 @@
 for a in range(0,4,1):
  l=['AP','ES','ET','FP']
  b=l.pop(a)
- print(b)
+ c=".xlsx"
+ print(b+c)
+ df = pd.read_excel(b+c)
+ #range(最初、最後、増減）でここは変更、
+ #lも必要に応じて変更
+ #printするたびに読み込み開始
