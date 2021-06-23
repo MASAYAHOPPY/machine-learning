@@ -1,0 +1,65 @@
+import os
+import numpy as np
+import numpy.random as random
+import scipy as sp
+import pandas as pd
+from pandas import Series, DataFrame
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import LinearSVC
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import classification_report
+os.chdir('D:/kenkyu/Padeldata54010/last/')
+os.getcwd()
+for a in range(0,4,1):
+ l1=['AP','ES','ET','FP']
+ b=l1.pop(a)
+ c=".xlsx"
+ for d in range(0,4,1):
+  df = pd.read_excel(b+c)
+  l2=['BV','T1','T2','T3']
+  del l2[d] 
+  df.drop(l2, axis=1,inplace=True)
+  df.isnull().sum()
+  df.dropna(inplace = True)
+  df.isnull().sum()
+  l3=['BV','T1','T2','T3']
+  X = df.drop(l3[d], axis=1)
+  Y = df[l3[d]]
+  X=X.astype('str')
+  Y=Y.astype('str')
+  X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
+  model = RandomForestClassifier()
+  model.fit(X_train, y_train)
+  y_pred = model.predict(X_test)
+  with open('file.txt', 'a') as f:
+   print(b,file=f)
+   print(l2[d],file=f)
+   print("RFtrain score:",model.score(X_train,y_train),file=f)
+   print("RFtest score:",model.score(X_test,y_test),file=f)
+   print(classification_report(y_test, y_pred),file=f)
+  model = LinearSVC()
+  model.fit(X_train, y_train)
+  y_pred = model.predict(X_test)
+  with open('file.txt', 'a') as f:
+   print("SVCtrain score:",model.score(X_train,y_train),file=f)
+   print("SVCtest score:",model.score(X_test,y_test),file=f)
+   print(classification_report(y_test, y_pred),file=f)
+  model = LogisticRegression()
+  model.fit(X_train, y_train)
+  y_pred = model.predict(X_test)
+  with open('file.txt', 'a') as f:
+   print("LRtrain score:",model.score(X_train,y_train),file=f)
+   print("LRtest score:",model.score(X_test,y_test),file=f)
+   print(classification_report(y_test, y_pred),file=f)
+  model = DecisionTreeClassifier()
+  model.fit(X_train, y_train)
+  y_pred = model.predict(X_test)
+  with open('file.txt', 'a') as f:
+   print("DTtrain score:",model.score(X_train,y_train),file=f)
+   print("DTtest score:",model.score(X_test,y_test),file=f)
+   print(classification_report(y_test, y_pred),file=f)
+
+
+ 
