@@ -2,3 +2,15 @@ from sklearn.model_selection import learning_curve
 import matplotlib.pyplot as plt
 
 train_sizes, train_scores, valid_scores = learning_curve(model, X_train, y_train, train_sizes=np.linspace(0.1, 1.0, 10), cv=5)
+print(np.linspace(0.1, 1.0, 10))
+print(train_sizes)
+print(train_scores)
+print(valid_scores)
+
+train_score_average = np.mean(train_scores, axis=1)
+valid_score_average = np.mean(valid_scores, axis=1)
+plt.plot(train_sizes, train_score_average, color='green')
+plt.plot(train_sizes, valid_score_average, color='red')
+plt.title("learning curve [Boston Ridge alpha=10]")
+plt.xlabel("sample_size")
+plt.ylabel("accuracy")
