@@ -11,7 +11,7 @@ plt.figure(figsize=(10, 5))
 for i in range(len(metrics)):
     metric = metrics[i]
     plt.subplot(1, 2, i+1) 
-    plt.title(metric)  .
+    plt.title(metric)  
     plt_train = history.history[metric]  
     plt_test = history.history['val_' + metric]  
     plt.plot(plt_train, label='training') 
