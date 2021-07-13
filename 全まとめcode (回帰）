@@ -1,3 +1,5 @@
+＜回帰モデル＞
+
 import os
 import numpy as np
 import numpy.random as random
@@ -5,14 +7,11 @@ import scipy as sp
 import pandas as pd
 from pandas import Series, DataFrame
 from sklearn.model_selection import train_test_split
-
 os.chdir('D:/kenkyu/inputdata')
 os.getcwd()
 df = pd.read_excel('inputdata.xlsx')
-
 df.dropna(inplace = True)
 df.isnull().sum()
-
 X = df.drop('Cell volume', axis=1)
 Y = df['Cell volume']
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
@@ -22,22 +21,13 @@ X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, rando
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score
-model = RandomForestRegressor(max_depth=30, n_estimators=30, random_state=42)
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
+model = RandomForestRegressor()
 model.fit(X_train, y_train)
-
-#randomforest()で出力でできる
-#計算してないように見えるけどモデルはできてる
-
-# 予測値を計算
 y_train_pred = model.predict(X_train)
 y_test_pred = model.predict(X_test)
-
-# MSEの計算
-from sklearn.metrics import mean_squared_error
 print('MSE train : %.3f, test : %.3f' % (mean_squared_error(y_train, y_train_pred), mean_squared_error(y_test, y_test_pred)) )
- 
-# R^2の計算
-from sklearn.metrics import r2_score
 print('R2 train : %.3f, test : %.3f' % (r2_score(y_train, y_train_pred), r2_score(y_test, y_test_pred)) )
  
 # 残差プロット
