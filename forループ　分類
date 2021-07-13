@@ -61,6 +61,6 @@ for a in range(0,4,1):
    print("DTtest score:",model.score(X_test,y_test),file=f)
    print(classification_report(y_test, y_pred),file=f)
  else:
-  print("inner roop FINISH!!!)
+  print("inner roop FINISH!!!")
 
  
