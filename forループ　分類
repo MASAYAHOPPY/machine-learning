@@ -35,7 +35,7 @@ for a in range(0,4,1):
   y_pred = model.predict(X_test)
   with open('file.txt', 'a') as f:
    print(b,file=f)
-   print(l2[d],file=f)
+   print(l3[d],file=f)
    print("RFtrain score:",model.score(X_train,y_train),file=f)
    print("RFtest score:",model.score(X_test,y_test),file=f)
    print(classification_report(y_test, y_pred),file=f)
@@ -60,7 +60,6 @@ for a in range(0,4,1):
    print("DTtrain score:",model.score(X_train,y_train),file=f)
    print("DTtest score:",model.score(X_test,y_test),file=f)
    print(classification_report(y_test, y_pred),file=f)
-  if d == 3
-  break
+
 
  
