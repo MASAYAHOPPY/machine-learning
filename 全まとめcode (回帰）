@@ -9,7 +9,7 @@ from pandas import Series, DataFrame
 from sklearn.model_selection import train_test_split
 os.chdir('D:/kenkyu/inputdata')
 os.getcwd()
-df = pd.read_excel('inputdata.xlsx')
+df = pd.read_excel('FP.xlsx')
 df.dropna(inplace = True)
 df.isnull().sum()
 X = df.drop('Cell volume', axis=1)
