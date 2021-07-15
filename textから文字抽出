@@ -1,3 +1,17 @@
+import re
+
+def extract_text_in_file(filepath, pattern_prev, pattern_next):
+    extracted_text_array = []
+    pattern = pattern_prev + '(.*)' + pattern_next
+    with open(filepath) as f:
+        lines = f.readlines()
+        for line in lines:
+            tmp_extracted_text_array = re.findall(pattern, line)
+            extracted_text_array.extend(tmp_extracted_text_array)
+    return extracted_text_array　
+    
+#データの型を決める
+ 
 filepath = './1000000.txt'
 pattern_prev = '_cell_formula_units_Z'
 pattern_next = '_cell_length_a'
@@ -5,6 +19,5 @@ extracted_text_array = extract_text_in_file(filepath, pattern_prev, pattern_next
 
 for extracted_text in extracted_text_array:
     print(extracted_text)
-
 #txtファイルを読み込み
 #prev~nextの間の文字を抽出
