@@ -1,7 +1,7 @@
 filepath = './.txt'
 pattern_prev = '_cell_formula_units_Z'
 pattern_next = '_cell_length_a'
-extracted_text_array = extract_text_in_file(filepath, pattern_prev, _cell_length_a)
+extracted_text_array = extract_text_in_file(filepath, pattern_prev, pattern_next)
 
 for extracted_text in extracted_text_array:
     print(extracted_text)
