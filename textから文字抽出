@@ -5,5 +5,6 @@ extracted_text_array = extract_text_in_file(filepath, pattern_prev, pattern_next
 
 for extracted_text in extracted_text_array:
     print(extracted_text)
-    
+
+#txtファイルを読み込み
 #prev~nextの間の文字を抽出
