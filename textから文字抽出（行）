@@ -6,7 +6,7 @@ with open(path) as f:
         if line.startswith('_cell_formula_units_Z'):
             print(path)
             print(line, end='')
-        if not line
+        if not line:
             print(path)
             print("NONE")
         
