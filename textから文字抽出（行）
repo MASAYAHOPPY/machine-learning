@@ -1,7 +1,6 @@
-import glob
 
-path = glob.glob("D:/kenkyu/Padeldata54010/last/*")
-with open(path) as f:
+for i in range(100):
+ with open('{}.txt'.format(i + 1), mode='r', encoding='utf-8') as f: 
     for line in f:
         if line.startswith('_cell_formula_units_Z'):
             print(path)
@@ -9,4 +8,5 @@ with open(path) as f:
         if not line:
             print(path)
             print("NONE")
+
         
