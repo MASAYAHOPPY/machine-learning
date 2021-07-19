@@ -1,4 +1,6 @@
 
+
+os.chdir('D:/kenkyu/Padeldata54010/last/')
 for i in range(1000000,1000100,1):
  with open('{}.txt'.format(i + 1), mode='r', encoding='utf-8') as f: 
     for line in f:
