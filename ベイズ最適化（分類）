@@ -10,6 +10,16 @@ from sklearn.ensemble import RandomForestClassifier
 from bayes_opt import BayesianOptimization
 os.chdir('D:/kenkyu/Padeldata54010/last/')
 os.getcwd()
+df = pd.read_excel('FP.xlsx')
+df.drop(['T3','T2','T1'], axis=1,inplace=True)
+df.isnull().sum()
+df.dropna(inplace = True)
+df.isnull().sum()
+X = df.drop('BV', axis=1)
+Y = df['BV']
+X=X.astype('str')
+Y=Y.astype('str')
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
 
 #def()の()の中身が調整したいハイパーパラメータである。
 #最初に交差検証しているので注意
