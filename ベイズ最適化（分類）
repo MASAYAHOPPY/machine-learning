@@ -1,6 +1,15 @@
+import os
+import numpy as np
+import numpy.random as random
+import scipy as sp
+import pandas as pd
+from pandas import Series, DataFrame
+from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import RandomForestClassifier
 from bayes_opt import BayesianOptimization
+os.chdir('D:/kenkyu/Padeldata54010/last/')
+os.getcwd()
 
 #def()の()の中身が調整したいハイパーパラメータである。
 #最初に交差検証しているので注意
