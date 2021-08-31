@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 os.chdir('D:/kenkyu/Padeldata54010/last/')
 os.getcwd()
-df = pd.read_excel('FP.xlsx')
+df = pd.read_excel('.xlsx')
 
 df.drop(['T3','T2','T1'], axis=1,inplace=True)
 df.isnull().sum()
