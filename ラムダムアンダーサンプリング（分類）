@@ -5,6 +5,7 @@ from sklearn.linear_model import LogisticRegression
 from imblearn.pipeline import Pipeline 
 from imblearn.under_sampling import RandomUnderSampler
 
+y_train.value_counts()
 strategy = {"1":59748, "2":8382, "3":578, "4":805, "6":169, "a":20, "b":3686, "c":1088, "d":240, "e":6, "m":141, "n":1637}
 select = SelectFromModel(RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42))
 scaler = StandardScaler()
