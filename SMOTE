@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from imblearn.pipeline import Pipeline 
 from sklearn.metrics import classification_report
 
-select = SelectFromModel(RandomForestClassifier(max_depth=30, n_estimators=30, random_state=42))
+select = SelectFromModel(RandomForestClassifier())
 scaler = StandardScaler()
 clf = LogisticRegression()
 
