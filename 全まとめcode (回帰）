@@ -1,5 +1,4 @@
 ＜回帰モデル＞
-
 import os
 import numpy as np
 import numpy.random as random
