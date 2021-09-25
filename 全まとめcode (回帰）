@@ -7,13 +7,13 @@ import scipy as sp
 import pandas as pd
 from pandas import Series, DataFrame
 from sklearn.model_selection import train_test_split
-os.chdir('D:/kenkyu/inputdata')
+os.chdir('D:/kenkyu/HOMOLUMO')
 os.getcwd()
 df = pd.read_excel('FP.xlsx')
 df.dropna(inplace = True)
 df.isnull().sum()
-X = df.drop('Cell volume', axis=1)
-Y = df['Cell volume']
+X = df.drop('HOMOLUMO', axis=1)
+Y = df['HOMOLUMO']
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
 
 import sklearn
