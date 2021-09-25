@@ -16,23 +16,64 @@ X = df.drop('Cell volume', axis=1)
 Y = df['Cell volume']
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3, random_state=0)
 
-
-＜ラムダムフォレスト＞
-
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import r2_score
+import sklearn
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
+
+# 残差プロット
+# 縦軸：トレーニング実測値-トレーニング推定値　横軸：トレーニング推定値
+# 縦軸：テスト実測値-テスト推定値　横軸：テスト推定値
+
+＜ラムダムフォレスト＞
+from sklearn.ensemble import RandomForestRegressor
 model = RandomForestRegressor()
 model.fit(X_train, y_train)
+
+＜ラッソ回帰＞
+from sklearn.linear_model import Lasso
+model = Lasso()
+model.fit(X_train, y_train)
+
+＜決定木＞
+from sklearn.tree import DecisionTreeRegressor
+model = DecisionTreeRegressor(random_state = 0)
+model.fit(X_train, y_train)
+
+＜Elastic Net Regressor＞
+from sklearn.linear_model import ElasticNet
+model = ElasticNet()
+model.fit(X_train, y_train)
+
+＜リッジ回帰＞
+from sklearn.linear_model import Ridge
+model = Ridge()
+model.fit(X_train, y_train)
+
+＜BaggingRegressor＞
+from sklearn.ensemble import BaggingRegressor
+model = BaggingRegressor()
+model.fit(X_train, y_train)
+
+＜AdaBoostRegressor＞
+from sklearn.ensemble import AdaBoostRegressor
+model = AdaBoostRegressor()
+model.fit(X_train, y_train)
+
+＜GradientBoostingRegressor＞
+from sklearn.ensemble import GradientBoostingRegressor
+model = GradientBoostingRegressor()
+model.fit(X_train, y_train)
+
+＜RandomForestRegressor＞
+from sklearn.ensemble import RandomForestRegressor as RFR
+model = RFR()
+model.fit(X_train, y_train)
+
 y_train_pred = model.predict(X_train)
 y_test_pred = model.predict(X_test)
 print('MSE train : %.3f, test : %.3f' % (mean_squared_error(y_train, y_train_pred), mean_squared_error(y_test, y_test_pred)) )
 print('R2 train : %.3f, test : %.3f' % (r2_score(y_train, y_train_pred), r2_score(y_test, y_test_pred)) )
- 
-# 残差プロット
-# 縦軸：トレーニング実測値-トレーニング推定値　横軸：トレーニング推定値
-# 縦軸：テスト実測値-テスト推定値　横軸：テスト推定値
+
 
 %matplotlib inline
 import matplotlib.pyplot as plt
