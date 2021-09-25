@@ -8,7 +8,7 @@ from pandas import Series, DataFrame
 from sklearn.model_selection import train_test_split
 os.chdir('D:/kenkyu/HOMOLUMO')
 os.getcwd()
-df = pd.read_excel('FP.xlsx')
+df = pd.read_excel('AP.xlsx')
 df.dropna(inplace = True)
 df.isnull().sum()
 X = df.drop('HOMOLUMO', axis=1)
