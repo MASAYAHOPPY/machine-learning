@@ -25,7 +25,7 @@ from sklearn.metrics import r2_score
 
 ＜決定木＞
 from sklearn.tree import DecisionTreeRegressor
-model = DecisionTreeRegressor(random_state = 0)
+model = DecisionTreeRegressor()
 model.fit(X_train, y_train)
 
 ＜ラムダムフォレスト＞
