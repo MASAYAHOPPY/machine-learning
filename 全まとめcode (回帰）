@@ -24,6 +24,11 @@ from sklearn.metrics import r2_score
 # 縦軸：トレーニング実測値-トレーニング推定値　横軸：トレーニング推定値
 # 縦軸：テスト実測値-テスト推定値　横軸：テスト推定値
 
+＜決定木＞
+from sklearn.tree import DecisionTreeRegressor
+model = DecisionTreeRegressor(random_state = 0)
+model.fit(X_train, y_train)
+
 ＜ラムダムフォレスト＞
 from sklearn.ensemble import RandomForestRegressor
 model = RandomForestRegressor()
@@ -32,11 +37,6 @@ model.fit(X_train, y_train)
 ＜ラッソ回帰＞
 from sklearn.linear_model import Lasso
 model = Lasso()
-model.fit(X_train, y_train)
-
-＜決定木＞
-from sklearn.tree import DecisionTreeRegressor
-model = DecisionTreeRegressor(random_state = 0)
 model.fit(X_train, y_train)
 
 ＜Elastic Net Regressor＞
@@ -62,11 +62,6 @@ model.fit(X_train, y_train)
 ＜GradientBoostingRegressor＞
 from sklearn.ensemble import GradientBoostingRegressor
 model = GradientBoostingRegressor()
-model.fit(X_train, y_train)
-
-＜RandomForestRegressor＞
-from sklearn.ensemble import RandomForestRegressor as RFR
-model = RFR()
 model.fit(X_train, y_train)
 
 y_train_pred = model.predict(X_train)
