@@ -1,0 +1,27 @@
+＃matplotをインポート
+
+＃learningcurve=(モデル、X訓練、Y訓練、サンプル数、交差検証数）
+
+＃X軸、Y軸の名称の定義
+
+＃関数＝plt.plot（X軸の名称、Y軸の名称、色）
+
+＃タイトル、X軸の名前、Y軸の名前
+
+import matplotlib.pyplot as plt
+
+train_sizes, train_scores, valid_scores = learning_curve(model, X_train, y_train, train_sizes=np.linspace(0.1, 1.0, 10), cv=5)
+print(np.linspace(0.1, 1.0, 10))
+print(train_sizes)
+print(train_scores)
+print(valid_scores)
+
+train_score_average = np.mean(train_scores, axis=1)
+valid_score_average = np.mean(valid_scores, axis=1)
+
+plt.plot(train_sizes, train_score_average, color='green')
+plt.plot(train_sizes, valid_score_average, color='red')
+
+plt.title("learning curve")
+plt.xlabel("sample_size")
+plt.ylabel("accuracy")
