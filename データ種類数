@@ -1,0 +1,6 @@
+＃全体
+print(df["BV"].value_counts())
+＃トレーニング
+print(y_train.value_counts())
+＃テスト
+print(y_test.value_counts())
