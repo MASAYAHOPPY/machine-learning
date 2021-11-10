@@ -1,0 +1,23 @@
+#昔の方
+from sklearn.model_selection import cross_val_score
+np.set_printoptions(precision=3)
+scores = cross_val_score(model, X, Y, cv=5)
+print(scores)
+# 桁数を指定
+# cv=5で分割数を指定
+# out[0.757  0.972  0.944  1.    0.971]
+
+#最新
+from sklearn.model_selection import cross_validate
+skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+ score_funcs = [
+        'accuracy',
+        'precision',
+        'recall',
+        'f1',
+    ]
+scores = cross_validate(clf, X, y, cv=skf, scoring=score_funcs)
+print('accuracy:', scores['test_accuracy'].mean())
+print('precision:', scores['test_precision'].mean())
+print('recall:', scores['test_recall'].mean())
+print('f1:', scores['test_f1'].mean())
