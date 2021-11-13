@@ -1,4 +1,5 @@
 ＃注意：X_train,y_trainを定義したあとに
+＃例としてランダムフォレストで定義してある
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
