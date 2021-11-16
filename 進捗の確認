@@ -1,0 +1,4 @@
+import time
+import numpy as np
+time = np.array([0,100])
+for _ in tqdm(time):
